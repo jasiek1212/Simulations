@@ -36,11 +36,9 @@ public class WorldMap {
         return mapState.get(position);
     }
 
+
     public boolean isOccupied(Vector2d position){
-        if(grassPositions.contains(position)){
-            return true;
-        }
-        return mapState.get(position) != null;
+        return objectAt(position) != null;
     }
 
     public void placeAnimals(int amount, Simulation simulation){

@@ -4,12 +4,12 @@ import Project.Model.WorldElements.Animal;
 
 import java.util.*;
 
-public class MapState {
+public class MapState extends HashMap<Vector2d,LinkedList<Animal>> {
 
     private final Map<Vector2d, LinkedList<Animal>> state = new HashMap<>();
 
     public LinkedList<Animal> get(Vector2d position){
-        return state.get(position);
+        return this.state.get(position);
     }
 
     public void remove(Animal animal){
