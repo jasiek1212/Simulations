@@ -1,6 +1,7 @@
 package Project.Model.Core;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class Vector2d{
     private final int x;
@@ -51,12 +52,16 @@ public class Vector2d{
 
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) return false;
         Vector2d vector2d = (Vector2d) o;
         return x == vector2d.x && y == vector2d.y;
     }
 
     public int hashCode() {
         return Objects.hash(x, y);
+    }
+
+    public static Vector2d randomVector(int width, int height){
+        return new Vector2d(new Random().nextInt(width),new Random().nextInt(height));
     }
 }
