@@ -1,7 +1,6 @@
 package Project.Model.WorldElements;
 
 import Project.Model.Core.MapState;
-import Project.Model.Core.RandomVector;
 import Project.Model.Core.Vector2d;
 import Project.Model.Util.MapVisualizer;
 import Project.Simulation;
@@ -17,10 +16,7 @@ public class WorldMap {
     private final List<Animal> animals = new LinkedList<>();
 
     private final MapState mapState = new MapState();
-    //mapState przechowuje każdą pozycję na mapie która jest zajmowaną przez trawę lub zwierzę.
-    //Może być wiele obiektów na jednej pozycji dlatego używamy listy, a linkedList dlatego, że
-    //raczej będziemy dodawać i usuwać elementy, niż się do nich odwoływać (jeszcze nie wiem jak
-    //z rozmnazaniem ale zawsze to mozna latwo zmienic na ArrayList albo coś innego)
+
     private final Set<Vector2d> grassPositions = new HashSet<>();
     private final Set<Vector2d> preferredPositions = new HashSet<>();
     private final Set<Vector2d> unPreferredPositions = new HashSet<>();
@@ -36,16 +32,14 @@ public class WorldMap {
         return mapState.get(position);
     }
 
+
     public boolean isOccupied(Vector2d position){
-        if(grassPositions.contains(position)){
-            return true;
-        }
-        return mapState.get(position) != null;
+        return objectAt(position) != null;
     }
 
     public void placeAnimals(int amount, Simulation simulation){
         for(int i=0;i<amount;i++){
-            this.place(new Animal(new RandomVector(width+1,height+1),simulation));
+            this.place(new Animal(Vector2d.randomVector(this.width,this.height),simulation));
         }
     }
 

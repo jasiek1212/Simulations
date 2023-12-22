@@ -20,9 +20,12 @@ public class Simulation {
     public void simulate(){
         WorldMap map = new WorldMap(config.getMapDimensions().getX(),config.getMapDimensions().getY());
         map.placeAnimals(config.getAnimalsNum(),this);
+        System.out.println(map);
+
 
         while(!map.allDead()){
             System.out.println(map.getMapState());
+            System.out.println(map.isOccupied(new Vector2d(1,1)));
             System.out.println(map.getMapState().get(new Vector2d(1,1)));
             System.out.println(map);
             map.moveAnimals();

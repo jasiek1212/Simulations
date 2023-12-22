@@ -6,7 +6,11 @@ import java.util.*;
 
 public class MapState {
 
-    private final Map<Vector2d, LinkedList<Animal>> state = new HashMap<>();
+    private final Map<Vector2d, LinkedList<Animal>> state;
+
+    public MapState(){
+        this.state = new HashMap<>();
+    }
 
     public LinkedList<Animal> get(Vector2d position){
         return state.get(position);
