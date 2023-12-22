@@ -20,5 +20,9 @@ public class MapState {
         if(state.get(animal.getPosition()) != null){state.get(animal.getPosition()).add(animal);}
         else{ state.put(animal.getPosition(),new LinkedList<>(List.of(animal)));}
     }
+
+    public String toString(){
+        return this.state.toString();
+    }
 }
 
