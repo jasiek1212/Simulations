@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3aadde26-29b2-476d-89ee-2df8ba1f72e0" name="Changes" comment="Animals move according to genotype">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/MapState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/MapState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/SimulationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/SimulationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Grass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/WorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/WorldMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +24,18 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -28,7 +48,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
+        <entry key="$PROJECT_DIR$/.." value="DevBranch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -42,22 +62,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "BranchJasia2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;BranchMacka&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Project.Model.Core" />
@@ -95,6 +115,14 @@
       <workItem from="1703093032271" duration="25565000" />
       <workItem from="1703235668601" duration="4133000" />
       <workItem from="1703240172587" duration="277000" />
+      <workItem from="1703273439544" duration="774000" />
+      <workItem from="1703276802439" duration="67000" />
+      <workItem from="1703325842138" duration="5730000" />
+      <workItem from="1703337354011" duration="3313000" />
+      <workItem from="1703495153071" duration="5652000" />
+      <workItem from="1703508436341" duration="2313000" />
+      <workItem from="1703597586891" duration="1510000" />
+      <workItem from="1703605388802" duration="5571000" />
     </task>
     <task id="LOCAL-00001" summary="Base">
       <option name="closed" value="true" />
@@ -123,7 +151,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

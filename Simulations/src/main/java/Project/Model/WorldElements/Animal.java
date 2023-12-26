@@ -69,7 +69,9 @@ public class Animal implements MapObject {
     public MapDirection getDirection(){
         return this.direction;
     }
-
+    public void eatPlant(Grass grass) {
+        this.energy += simulation.getConfig().getEnergyFromPlant();
+    }
     public String toString(){
         return String.valueOf(this.id);
     }
