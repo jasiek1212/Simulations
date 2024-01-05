@@ -20,6 +20,7 @@ public class Simulation {
     public void simulate(){
         WorldMap map = new WorldMap(config.getMapDimensions().getX(),config.getMapDimensions().getY());
         map.placeAnimals(config.getAnimalsNum(),this);
+        map.spreadSeeds(map, this, 30);
         System.out.println(map);
 
 
@@ -31,9 +32,6 @@ public class Simulation {
             map.moveAnimals();
             map.clearDeadAnimals();
         }
-
-
-
 
     }
 }

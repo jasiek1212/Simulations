@@ -7,13 +7,15 @@ public class SimulationConfig {
     private final int genomeLength;
     private final int startingEnergy;
     private final int dailyEnergy;
+    private final int energyFromPlant;
 
-    public SimulationConfig(Vector2d mapDimensions, int animalsNum, int genomeLength, int startingEnergy, int dailyEnergy){
+    public SimulationConfig(Vector2d mapDimensions, int animalsNum, int genomeLength, int startingEnergy, int dailyEnergy, int energyFromPlant){
         this.mapDimensions = mapDimensions;
         this.animalsNum = animalsNum;
         this.genomeLength = genomeLength;
         this.startingEnergy = startingEnergy;
         this.dailyEnergy = dailyEnergy;
+        this.energyFromPlant = energyFromPlant;
     }
 
 
@@ -35,4 +37,6 @@ public class SimulationConfig {
     public int getDailyEnergy() {
         return dailyEnergy;
     }
+
+    public int getEnergyFromPlant() {return energyFromPlant;}
 }

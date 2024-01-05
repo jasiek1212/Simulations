@@ -16,4 +16,5 @@ public class Grass implements MapObject{
     public String toString() {
         return "*";
     }
+
 }
