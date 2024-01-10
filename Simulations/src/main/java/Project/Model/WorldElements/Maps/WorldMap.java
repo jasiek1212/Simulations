@@ -3,7 +3,9 @@ package Project.Model.WorldElements.Maps;
 import Project.Model.Core.MapState;
 import Project.Model.Core.Vector2d;
 import Project.Model.Util.MapVisualizer;
-import Project.Model.WorldElements.Animal;
+import Project.Model.WorldElements.Animals.Animal;
+import Project.Model.WorldElements.Animals.AnimalStandard;
+import Project.Model.WorldElements.Animals.AnimalVariant;
 import Project.Model.WorldElements.Grass;
 import Project.Model.WorldElements.MapObject;
 import Project.Simulation;
@@ -32,10 +34,10 @@ public abstract class WorldMap {
     }
 
     public MapObject objectAt(Vector2d position){
-        List<Animal> animalsAtPosition = mapState.get(position);
+        LinkedList<Animal> animalsAtPosition = mapState.get(position);
 
         if (animalsAtPosition != null && !animalsAtPosition.isEmpty()) {
-            return ((LinkedList<Animal>) animalsAtPosition).getFirst();
+            return animalsAtPosition.getFirst();
         } else if (isPlantAt(position)) {
             return new Grass(position);
         }
@@ -50,7 +52,10 @@ public abstract class WorldMap {
 
     public void placeAnimals(int amount, Simulation simulation){
         for(int i=0;i<amount;i++){
-            this.place(new Animal(Vector2d.randomVector(this.width,this.height),simulation));
+            this.place(switch(simulation.getConfig().getBehaviourVariant()){
+                case 1 -> new AnimalVariant(Vector2d.randomVector(this.width,this.height),simulation);
+                default -> new AnimalStandard(Vector2d.randomVector(this.width,this.height),simulation);
+            });
         }
     }
 
@@ -87,19 +92,14 @@ public abstract class WorldMap {
         return animals.isEmpty();
     }
     public void moveAnimals() {
-        Set<Vector2d> eatenGrassPositions = new HashSet<>();
 
         for (Animal currAnimal : animals) {
             mapState.remove(currAnimal);
 
             if (currAnimal.move(this)) {
-                Vector2d newPosition = currAnimal.getPosition();
-
                 mapState.put(currAnimal);
             }
         }
-
-        grassPositions.removeAll(eatenGrassPositions);
     }
     public void animalsEat() {
         for (Map.Entry<Vector2d, LinkedList<Animal>> entry : mapState.entrySet()) {

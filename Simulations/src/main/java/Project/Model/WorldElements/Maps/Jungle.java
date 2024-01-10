@@ -1,13 +1,8 @@
 package Project.Model.WorldElements.Maps;
 
-import Project.Model.Core.MapState;
 import Project.Model.Core.Vector2d;
 import Project.Model.Enums.MapDirection;
-import Project.Model.Util.MapVisualizer;
-import Project.Model.WorldElements.Animal;
 import Project.Model.WorldElements.Grass;
-import Project.Model.WorldElements.MapObject;
-import Project.Simulation;
 
 import java.util.*;
 

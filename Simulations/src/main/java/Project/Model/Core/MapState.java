@@ -1,7 +1,8 @@
 package Project.Model.Core;
 
-import Project.Model.WorldElements.Animal;
 import Project.Model.WorldElements.Grass;
+import Project.Model.WorldElements.Animals.Animal;
+
 
 import java.util.*;
 
@@ -19,7 +20,7 @@ public class MapState{
         this.state = new HashMap<>();
         this.plants = new HashMap<>();
     }
-    
+
     public LinkedList<Animal> get(Vector2d position){
         return this.state.get(position);
     }

@@ -11,9 +11,16 @@ public class SimulationConfig {
 
     private final int numberOfPlants;
 
+    private final int behaviourVariant;
+
     private final int mapVariant;
 
-    public SimulationConfig(Vector2d mapDimensions, int animalsNum, int genomeLength, int startingEnergy, int dailyEnergy, int energyFromPlant, int numberOfPlants, int mapVariant){
+    public SimulationConfig(
+            Vector2d mapDimensions,
+            int animalsNum, int genomeLength,
+            int startingEnergy, int dailyEnergy, int energyFromPlant,
+            int numberOfPlants,
+            int mapVariant, int behaviourVariant){
         this.mapDimensions = mapDimensions;
         this.animalsNum = animalsNum;
         this.genomeLength = genomeLength;
@@ -22,7 +29,11 @@ public class SimulationConfig {
         this.energyFromPlant = energyFromPlant;
         this.numberOfPlants = numberOfPlants;
         this.mapVariant = mapVariant;
+        this.behaviourVariant = behaviourVariant;
+    }
 
+    public int getBehaviourVariant(){
+        return behaviourVariant;
     }
 
     public int getNumberOfPlants() {

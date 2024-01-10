@@ -1,7 +1,6 @@
 package Project.Model.Util;
 
 import Project.Model.Core.Vector2d;
-import Project.Model.WorldElements.Maps.Equator;
 import Project.Model.WorldElements.Maps.WorldMap;
 
 public class MapVisualizer {
