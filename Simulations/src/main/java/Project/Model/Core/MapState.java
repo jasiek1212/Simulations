@@ -1,6 +1,7 @@
 package Project.Model.Core;
 
-import Project.Model.WorldElements.Animal;
+import Project.Model.WorldElements.Animals.Animal;
+
 
 import java.util.*;
 

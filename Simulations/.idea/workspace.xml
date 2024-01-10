@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3aadde26-29b2-476d-89ee-2df8ba1f72e0" name="Changes" comment="Animals move according to genotype">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/Animal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/AnimalVariant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/Genome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/Genome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/MapState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/MapState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/AnimalStandard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/WorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/WorldMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Simulation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +29,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -32,6 +41,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HierarchyBrowserManager">
+    <option name="SCOPE" value="This Module" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -55,11 +67,16 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\janek\OneDrive\Dokumenty\Obiektowe\Simulations\Simulations\src\main\java\Project\Model\WorldElements" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Project.Model.WorldElements.Animals" />
       <recent name="Project.Model.Core" />
       <recent name="" />
     </key>
@@ -95,6 +112,12 @@
       <workItem from="1703093032271" duration="25565000" />
       <workItem from="1703235668601" duration="4133000" />
       <workItem from="1703240172587" duration="277000" />
+      <workItem from="1703593596723" duration="6252000" />
+      <workItem from="1704275383968" duration="6000" />
+      <workItem from="1704452902075" duration="2041000" />
+      <workItem from="1704734725063" duration="456000" />
+      <workItem from="1704879876576" duration="1345000" />
+      <workItem from="1704881511904" duration="6496000" />
     </task>
     <task id="LOCAL-00001" summary="Base">
       <option name="closed" value="true" />

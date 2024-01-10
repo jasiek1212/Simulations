@@ -3,6 +3,8 @@ package Project.Model.WorldElements;
 import Project.Model.Core.MapState;
 import Project.Model.Core.Vector2d;
 import Project.Model.Util.MapVisualizer;
+import Project.Model.WorldElements.Animals.Animal;
+import Project.Model.WorldElements.Animals.AnimalStandard;
 import Project.Simulation;
 
 import java.util.*;
@@ -39,7 +41,7 @@ public class WorldMap {
 
     public void placeAnimals(int amount, Simulation simulation){
         for(int i=0;i<amount;i++){
-            this.place(new Animal(Vector2d.randomVector(this.width,this.height),simulation));
+            this.place(new AnimalStandard(Vector2d.randomVector(this.width,this.height),simulation));
         }
     }
 
@@ -60,7 +62,7 @@ public class WorldMap {
     }
     public void moveAnimals(){
         for (Animal currAnimal : animals) {
-            System.out.println(currAnimal.toString()+' '+ currAnimal.getDirection()+' '+ Arrays.toString(currAnimal.getGenome())+' '+currAnimal.getPosition());
+            System.out.println(currAnimal.toString()+' '+ currAnimal.getDirection()+' '+ Arrays.toString(currAnimal.getGenome())+' '+ currAnimal.getPosition());
             mapState.remove(currAnimal);
             if(currAnimal.move(this)){
                 mapState.put(currAnimal);

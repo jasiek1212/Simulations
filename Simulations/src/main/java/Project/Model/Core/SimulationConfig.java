@@ -8,12 +8,19 @@ public class SimulationConfig {
     private final int startingEnergy;
     private final int dailyEnergy;
 
-    public SimulationConfig(Vector2d mapDimensions, int animalsNum, int genomeLength, int startingEnergy, int dailyEnergy){
+    private final int behaviourVariant;
+
+    public SimulationConfig(
+            Vector2d mapDimensions, int animalsNum, int genomeLength,
+            int startingEnergy, int dailyEnergy,
+            int behaviourVariant
+            ){
         this.mapDimensions = mapDimensions;
         this.animalsNum = animalsNum;
         this.genomeLength = genomeLength;
         this.startingEnergy = startingEnergy;
         this.dailyEnergy = dailyEnergy;
+        this.behaviourVariant = behaviourVariant;
     }
 
 
