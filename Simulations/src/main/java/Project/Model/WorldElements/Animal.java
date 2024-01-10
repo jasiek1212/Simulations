@@ -3,6 +3,8 @@ package Project.Model.WorldElements;
 import Project.Model.Core.Genome;
 import Project.Model.Core.Vector2d;
 import Project.Model.Enums.MapDirection;
+import Project.Model.WorldElements.Maps.Equator;
+import Project.Model.WorldElements.Maps.WorldMap;
 import Project.Simulation;
 
 
@@ -69,7 +71,7 @@ public class Animal implements MapObject {
     public MapDirection getDirection(){
         return this.direction;
     }
-    public void eatPlant(Grass grass) {
+    public void eatPlant() {
         this.energy += simulation.getConfig().getEnergyFromPlant();
     }
     public String toString(){

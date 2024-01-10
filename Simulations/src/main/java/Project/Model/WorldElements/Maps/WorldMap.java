@@ -1,42 +1,32 @@
-package Project.Model.WorldElements;
+package Project.Model.WorldElements.Maps;
 
 import Project.Model.Core.MapState;
 import Project.Model.Core.Vector2d;
-import Project.Model.Enums.MapDirection;
 import Project.Model.Util.MapVisualizer;
+import Project.Model.WorldElements.Animal;
+import Project.Model.WorldElements.Grass;
+import Project.Model.WorldElements.MapObject;
 import Project.Simulation;
 
 import java.util.*;
 
-public class WorldMap {
-
+public abstract class WorldMap {
     public static final Vector2d MAP_BEGINNING = new Vector2d(0,0);
 
-    public int getWidth() {
-        return width;
-    }
+    protected final int width;
 
-    private final int width;
+    protected final int height;
 
-    public int getHeight() {
-        return height;
-    }
+    protected final List<Animal> animals = new LinkedList<>();
 
-    private final int height;
+    protected final MapState mapState = new MapState();
 
-    private final List<Animal> animals = new LinkedList<>();
 
-    private final MapState mapState = new MapState();
+    protected final Set<Vector2d> grassPositions = new HashSet<>();
 
-    public Set<Vector2d> getGrassPositions() {
-        return grassPositions;
-    }
+    protected final LinkedList<Animal> deadAnimals = new LinkedList<>();
 
-    private final Set<Vector2d> grassPositions = new HashSet<>();
-
-    private final LinkedList<Animal> deadAnimals = new LinkedList<>();
-
-    public WorldMap(int width, int height){
+    protected WorldMap(int width, int height){
         this.width = width;
         this.height = height;
     }
@@ -63,79 +53,11 @@ public class WorldMap {
             this.place(new Animal(Vector2d.randomVector(this.width,this.height),simulation));
         }
     }
-    public void spreadSeeds(WorldMap map, Simulation simulation, int numberOfPlants) {
-        Random random = new Random();
 
-        int equatorStart = (int) (height * 0.4);
-        int equatorEnd = (int) (height * 0.6);
-
-        List<Vector2d> preferredPositions = new ArrayList<>();
-        List<Vector2d> unpreferredPositions = new ArrayList<>();
-
-        for (int j = equatorStart; j <= equatorEnd; j++) {
-            for (int i = 0; i < width; i++) {
-                preferredPositions.add(new Vector2d(i, j));
-            }
-        }
-
-        for (int j = 0; j < height; j++) {
-            for (int i = 0; i < width; i++) {
-                if (j < equatorStart || j > equatorEnd) {
-                    unpreferredPositions.add(new Vector2d(i, j));
-                }
-            }
-        }
-
-        Collections.shuffle(unpreferredPositions);
-        Collections.shuffle(preferredPositions);
-
-        int j = 0;
-        int k = 0;
-        for (int i = 0; i < numberOfPlants; i++) {
-            Vector2d position;
-            if (random.nextDouble() < 0.8) {
-                position = preferredPositions.get(j);
-                j++;
-                map.placePlant(new Grass(position));
-            }
-            else {
-                position = unpreferredPositions.get(k);
-                k++;
-                map.placePlant(new Grass(position));
-            }
-        }
-    }
-    public void creepingJungle(WorldMap map) {
-        List<Vector2d> directions = Arrays.asList(
-                new Vector2d(1, 0), new Vector2d(1, 1), new Vector2d(0, 1),
-                new Vector2d(-1, 1), new Vector2d(-1, 0), new Vector2d(-1, -1),
-                new Vector2d(0, -1), new Vector2d(1, -1)
-        );
-
-        for (Vector2d plantPosition : grassPositions) {
-                for (Vector2d direction : directions) {
-                    Vector2d newPosition = plantPosition.add(direction);
-                    if (!map.isPlantAt(newPosition) && map.isInside(newPosition)) {
-                        map.placePlant(new Grass(newPosition));
-                    }
-                }
-        }
-    }
     public boolean isInside(Vector2d position) {
         return position.getX() >= 0 && position.getX() < width &&
                 position.getY() >= 0 && position.getY() < height;
     }
-//    public void eatPlants(Vector2d position) {
-//        LinkedList<Animal> animalsAtPosition = mapState.get(position);
-//
-//        if (animalsAtPosition != null && !animalsAtPosition.isEmpty()) {
-//            for (Animal animal : animalsAtPosition) {
-//                animal.eatPlant(new Grass(animal.getPosition()));
-//            }
-//
-//            removePlant(position);
-//        }
-//    }
     public MapState getMapState(){
         return this.mapState;
     }
@@ -146,7 +68,7 @@ public class WorldMap {
     public boolean isPlantAt(Vector2d position) {
         return grassPositions.contains(position);
     }
-    private void placePlant(Grass grass){
+    protected void placePlant(Grass grass){
         mapState.putPlant(grass);
         grassPositions.add(grass.getPosition());
     }
@@ -173,11 +95,6 @@ public class WorldMap {
             if (currAnimal.move(this)) {
                 Vector2d newPosition = currAnimal.getPosition();
 
-                if (grassPositions.contains(newPosition)) {
-                    currAnimal.eatPlant(new Grass(newPosition));
-                    eatenGrassPositions.add(newPosition);
-                    mapState.removePlant(new Grass(newPosition));
-                }
                 mapState.put(currAnimal);
             }
         }
@@ -191,7 +108,7 @@ public class WorldMap {
 
             if (grassPositions.contains(position) && !animalsAtPosition.isEmpty()) {
                 Animal animalToEat = findAnimalWithMaxEnergy(animalsAtPosition);
-                animalToEat.eatPlant(new Grass(position));
+                animalToEat.eatPlant();
                 grassPositions.remove(position);
 
             }
@@ -233,5 +150,6 @@ public class WorldMap {
         MapVisualizer map= new MapVisualizer(this);
         return map.draw(MAP_BEGINNING,new Vector2d(this.width,this.height));
     }
-
+    public abstract void spreadSeeds(int numberOfPlants);
 }
+
