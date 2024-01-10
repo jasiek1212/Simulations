@@ -7,7 +7,16 @@ import java.util.*;
 
 public class Equator extends WorldMap{
 
+    public List<Vector2d> getPreferredPositions() {
+        return preferredPositions;
+    }
+
     private List<Vector2d> preferredPositions = new ArrayList<>();
+
+    public List<Vector2d> getUnpreferredPositions() {
+        return unpreferredPositions;
+    }
+
     private List<Vector2d> unpreferredPositions = new ArrayList<>();
 
 

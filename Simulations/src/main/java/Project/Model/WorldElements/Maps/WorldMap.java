@@ -15,9 +15,21 @@ import java.util.*;
 public abstract class WorldMap {
     public static final Vector2d MAP_BEGINNING = new Vector2d(0,0);
 
+    public int getWidth() {
+        return width;
+    }
+
     protected final int width;
 
+    public int getHeight() {
+        return height;
+    }
+
     protected final int height;
+
+    public List<Animal> getAnimals() {
+        return animals;
+    }
 
     protected final List<Animal> animals = new LinkedList<>();
 
@@ -25,6 +37,10 @@ public abstract class WorldMap {
 
 
     protected final Set<Vector2d> grassPositions = new HashSet<>();
+
+    public LinkedList<Animal> getDeadAnimals() {
+        return deadAnimals;
+    }
 
     protected final LinkedList<Animal> deadAnimals = new LinkedList<>();
 
@@ -66,14 +82,14 @@ public abstract class WorldMap {
     public MapState getMapState(){
         return this.mapState;
     }
-    private void place(Animal animal){
+    public void place(Animal animal){
         mapState.put(animal);
         animals.add(animal);
     }
     public boolean isPlantAt(Vector2d position) {
         return grassPositions.contains(position);
     }
-    protected void placePlant(Grass grass){
+    public void placePlant(Grass grass){
         mapState.putPlant(grass);
         grassPositions.add(grass.getPosition());
     }

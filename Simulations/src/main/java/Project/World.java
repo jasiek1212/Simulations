@@ -23,10 +23,5 @@ public class World {
         Simulation sim = new Simulation(config);
         sim.simulate();
 
-
-
     }
-
-
-
 }
