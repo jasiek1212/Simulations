@@ -1,8 +1,9 @@
 package Project;
 
 import Project.Model.Core.SimulationConfig;
-import Project.Model.Core.Vector2d;
-import Project.Model.WorldElements.WorldMap;
+import Project.Model.WorldElements.Maps.Equator;
+import Project.Model.WorldElements.Maps.Jungle;
+import Project.Model.WorldElements.Maps.WorldMap;
 
 public class Simulation {
 
@@ -18,22 +19,23 @@ public class Simulation {
     }
 
     public void simulate(){
-        WorldMap map = new WorldMap(config.getMapDimensions().getX(),config.getMapDimensions().getY());
+        WorldMap map = switch(config.getMapVariant()){
+            case 0 -> new Equator(config.getMapDimensions().getX(), config.getMapDimensions().getY());
+            case 1 -> new Jungle(config.getMapDimensions().getX(), config.getMapDimensions().getY());
+            default -> new Equator(config.getMapDimensions().getX(), config.getMapDimensions().getY());
+        };
         map.placeAnimals(config.getAnimalsNum(),this);
         System.out.println(map);
 
 
         while(!map.allDead()){
             System.out.println(map.getMapState());
-            System.out.println(map.isOccupied(new Vector2d(1,1)));
-            System.out.println(map.getMapState().get(new Vector2d(1,1)));
             System.out.println(map);
+            map.spreadSeeds(config.getNumberOfPlants());
             map.moveAnimals();
+            map.animalsEat();
             map.clearDeadAnimals();
         }
-
-
-
 
     }
 }

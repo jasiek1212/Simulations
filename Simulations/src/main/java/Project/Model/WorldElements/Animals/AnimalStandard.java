@@ -4,7 +4,7 @@ import Project.Model.Core.Genome;
 import Project.Model.Core.Vector2d;
 import Project.Model.Enums.MapDirection;
 import Project.Model.WorldElements.MapObject;
-import Project.Model.WorldElements.WorldMap;
+import Project.Model.WorldElements.Maps.WorldMap;
 import Project.Simulation;
 
 
@@ -38,3 +38,4 @@ public class AnimalStandard extends Animal {
         }
     }
 }
+
