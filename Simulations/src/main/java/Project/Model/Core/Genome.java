@@ -40,11 +40,11 @@ public class Genome {
                 childGenes[i+numsOfFirst] = genome2.getGenes()[i];
             }
         }
-        childGenes = Genome.mutate(childGenes, config);
+        Genome.mutate(childGenes, config);
         return new Genome(childGenes);
     }
 
-    private static byte[] mutate(byte[] genes, SimulationConfig config){
+    private static void mutate(byte[] genes, SimulationConfig config){
         int numberOfGenesToMutate = new Random().nextInt(config.getMutationsNo().difference());
         Set<Integer> alreadyMutated = new HashSet<>();
         for(int i=0;i<numberOfGenesToMutate;i++){
@@ -57,7 +57,6 @@ public class Genome {
             genes[geneToMutate] = (byte) ((genes[geneToMutate]+swapToDifferentGene)%8);
 
         }
-        return genes;
     }
 
     //Change active genes
@@ -76,18 +75,14 @@ public class Genome {
     public byte[] getGenes(){
         return this.genes;
     }
-
-
-
     public int getGene(){
         return this.genes[currentGeneIndex];
     }
-
-
     public int size(){
         return this.genes.length;
     }
 
+    //Random genotype generator
     public static byte[] generateRandomGenes(int genomeLength){
         byte[] genes = new byte[genomeLength];
         for(int i=0;i<genomeLength;i++){

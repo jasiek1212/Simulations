@@ -11,12 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class JungleTest {
     private Jungle jungle;
-    private SimulationConfig config;
     private Simulation simulation;
     @BeforeEach
     void setUp() {
-        config = new SimulationConfig(
-                new Vector2d(5,5),
+        SimulationConfig config = new SimulationConfig(
+                new Vector2d(5, 5),
                 5,
                 5,
                 3,
@@ -26,10 +25,10 @@ class JungleTest {
                 1,
                 1,
                 0,
-                new Vector2d(0,0),
+                new Vector2d(0, 0),
                 3);
         simulation = new Simulation(config);
-        jungle = new Jungle(10, 10);
+        jungle = new Jungle(simulation);
 
     }
 

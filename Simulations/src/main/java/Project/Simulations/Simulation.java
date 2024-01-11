@@ -16,9 +16,8 @@ public class Simulation implements Runnable {
     //Run simulation
     public void run(){
         WorldMap map = switch(config.getMapVariant()){
-            case 0 -> new Equator(config.getMapDimensions().getX(), config.getMapDimensions().getY());
-            case 1 -> new Jungle(config.getMapDimensions().getX(), config.getMapDimensions().getY());
-            default -> new Equator(config.getMapDimensions().getX(), config.getMapDimensions().getY());
+            case 1 -> new Jungle(this);
+            default -> new Equator(this);
         };
         map.placeAnimals(config.getAnimalsNum(),this);
         System.out.println(map);

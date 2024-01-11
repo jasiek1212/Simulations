@@ -12,7 +12,6 @@ public class Grass implements MapObject{
     public Vector2d getPosition() {
         return this.position;
     }
-    @Override
     public String toString() {
         return "*";
     }

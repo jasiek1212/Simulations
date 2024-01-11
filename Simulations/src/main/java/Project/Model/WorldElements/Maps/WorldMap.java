@@ -22,11 +22,13 @@ public abstract class WorldMap {
     protected final GeneralStatistics statistics = new GeneralStatistics(this);
     protected final Set<Vector2d> grassPositions = new HashSet<>();
     protected final LinkedList<Animal> deadAnimals = new LinkedList<>();
+    protected final Simulation simulation;
 
 
-    protected WorldMap(int width, int height){
-        this.width = width;
-        this.height = height;
+    protected WorldMap(Simulation simulation){
+        this.width = simulation.getConfig().getMapDimensions().getX();
+        this.height = simulation.getConfig().getMapDimensions().getY();
+        this.simulation = simulation;
     }
 
     //Simulation Helpers
@@ -60,11 +62,8 @@ public abstract class WorldMap {
         grassPositions.add(grass.getPosition());
     }
     public void removePlant(Vector2d position) {
-        Grass grass = mapState.getPlants().get(position);
-        if (grass != null) {
-            mapState.getPlants().remove(position);
-            grassPositions.remove(position);
-        }
+        grassPositions.remove(position);
+        mapState.removePlant(position);
     }
     public void animalDied(Animal animal){
         deadAnimals.add(animal);
@@ -114,6 +113,7 @@ public abstract class WorldMap {
                 Animal animalToEat = findAnimalWithMaxEnergy(animalsAtPosition);
                 animalToEat.eatPlant();
                 grassPositions.remove(position);
+                mapState.removePlant(position);
 
             }
         }
@@ -165,29 +165,37 @@ public abstract class WorldMap {
 
         Animal maxEnergyAnimal = animals.getFirst();
         for (Animal animal : animals) {
-            if (animal.getEnergy() > maxEnergyAnimal.getEnergy()) {
-                maxEnergyAnimal = animal;
-            }
+            maxEnergyAnimal = chooseBetterAnimal(maxEnergyAnimal, animal);
         }
-
         return maxEnergyAnimal;
     }
-    private Animal[] findTopTwoAnimals(LinkedList<Animal> animalList) {
-        Animal[] topTwoAnimals = new Animal[2];
-        int maxEnergy = Integer.MIN_VALUE;
-
-        for (Animal animal : animalList) {
-            int energy = animal.getEnergy();
-
-            if (energy > maxEnergy) {
-                topTwoAnimals[1] = topTwoAnimals[0];
-                topTwoAnimals[0] = animal;
-                maxEnergy = energy;
-            } else if (topTwoAnimals[1] == null || energy > topTwoAnimals[1].getEnergy()) {
-                topTwoAnimals[1] = animal;
+    private Animal chooseBetterAnimal(Animal maxEnergyAnimal, Animal animal) {
+        if (animal.getEnergy() > maxEnergyAnimal.getEnergy()) {
+            maxEnergyAnimal = animal;
+        } else if (animal.getEnergy() == maxEnergyAnimal.getEnergy()) {
+            if(simulation.getDays()-animal.getStats().whenBorn() > simulation.getDays()-maxEnergyAnimal.getStats().whenBorn()){
+                maxEnergyAnimal = animal;
+            }
+            else if(simulation.getDays()-animal.getStats().whenBorn() == simulation.getDays()-maxEnergyAnimal.getStats().whenBorn()){
+                if(animal.getStats().childrenCount() > maxEnergyAnimal.getStats().childrenCount()){
+                    maxEnergyAnimal = animal;
+                }
+                else if(animal.getStats().childrenCount() == maxEnergyAnimal.getStats().childrenCount()){
+                    double random = Math.random();
+                    maxEnergyAnimal = random > 0.5 ? maxEnergyAnimal : animal;
+                }
             }
         }
-
+        return maxEnergyAnimal;
+    }
+    private Animal[] findTopTwoAnimals(LinkedList<Animal> animals) {
+        Animal[] topTwoAnimals = new Animal[2];
+        topTwoAnimals[0] = findAnimalWithMaxEnergy(animals);
+        Animal secondBestAnimal = animals.get(2);
+        for (Animal animal : animals) {
+            if(animal == topTwoAnimals[0]){continue;}
+            secondBestAnimal = chooseBetterAnimal(secondBestAnimal, animal);
+        }
         return topTwoAnimals;
     }
 

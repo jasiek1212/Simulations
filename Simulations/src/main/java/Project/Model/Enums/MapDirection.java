@@ -27,6 +27,7 @@ public enum MapDirection {
         this.value = value;
     }
 
+    //Getter, setter
     public static MapDirection setDirection(int value){
         try{
         return switch(value){
@@ -45,11 +46,11 @@ public enum MapDirection {
             throw new RuntimeException();
         }
     }
-
     public int getValue(){
         return this.value;
     }
 
+    //Random direction generator
     public static MapDirection randomDirection() {
         byte random = (byte) new Random().nextInt(8);
         return setDirection(random);
