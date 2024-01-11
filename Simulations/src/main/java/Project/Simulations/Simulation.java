@@ -16,23 +16,23 @@ public class Simulation implements Runnable {
     //Run simulation
     public void run(){
         WorldMap map = switch(config.getMapVariant()){
-            case 0 -> new Equator(config.getMapDimensions().getX(), config.getMapDimensions().getY());
-            case 1 -> new Jungle(config.getMapDimensions().getX(), config.getMapDimensions().getY());
-            default -> new Equator(config.getMapDimensions().getX(), config.getMapDimensions().getY());
+            case 1 -> new Jungle(this);
+            default -> new Equator(this);
         };
         map.placeAnimals(config.getAnimalsNum(),this);
         System.out.println(map);
 
 
         while(!map.allDead()){
-            System.out.println(map.getMapState());
-            System.out.println(map);
+            System.out.println("Day: " + days);
             map.clearDeadAnimals();
             map.moveAnimals();
             map.animalsEat();
-            map.breedAnimals(config.getBreedingEnergy());
-            map.spreadSeeds(config.getNumberOfPlants());
+            map.breedAnimals();
+            map.spreadSeeds();
             days++;
+            System.out.println(map.getMapState());
+            System.out.println(map);
         }
 
     }

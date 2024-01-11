@@ -16,7 +16,6 @@ class AnimalTest {
     private Animal animal;
     private SimulationConfig config;
     private WorldMap map;
-    private Simulation simulation;
 
     @BeforeEach
     void setUp() {
@@ -29,9 +28,12 @@ class AnimalTest {
                 1,
                 2,
                 1,
-                1, 0, new Vector2d(0,0), 3);
-        simulation = new Simulation(config);
-        map = new Equator(10,10);
+                1,
+                0,
+                new Vector2d(0,0),
+                3);
+        Simulation simulation = new Simulation(config);
+        map = new Equator(simulation);
         animal = new AnimalStandard(new Vector2d(2, 2), simulation);
     }
 

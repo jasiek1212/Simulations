@@ -11,13 +11,12 @@ import org.junit.jupiter.api.Test;
 class AnimalStandardTest {
     private Simulation simulation;
     private AnimalStandard animal;
-    private SimulationConfig config;
     private Equator worldMap;
 
     @BeforeEach
     void setUp() {
-        config = new SimulationConfig(
-                new Vector2d(5,5),
+        SimulationConfig config = new SimulationConfig(
+                new Vector2d(5, 5),
                 5,
                 5,
                 3,
@@ -27,11 +26,11 @@ class AnimalStandardTest {
                 1,
                 1,
                 0,
-                new Vector2d(0,0),
+                new Vector2d(0, 0),
                 3);
         simulation = new Simulation(config);
         animal = new AnimalStandard(new Vector2d(2, 2), simulation);
-        worldMap = new Equator(10, 10);
+        worldMap = new Equator(simulation);
 
     }
 

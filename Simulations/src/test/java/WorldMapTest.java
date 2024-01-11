@@ -12,13 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class WorldMapTest {
     private Equator worldMap;
-    private SimulationConfig config;
     private Simulation simulation;
 
     @BeforeEach
     void setUp() {
-        config = new SimulationConfig(
-                new Vector2d(5,5),
+        SimulationConfig config = new SimulationConfig(
+                new Vector2d(5, 5),
                 5,
                 5,
                 3,
@@ -28,10 +27,10 @@ public class WorldMapTest {
                 1,
                 1,
                 0,
-                new Vector2d(0,0),
+                new Vector2d(0, 0),
                 3);
         simulation = new Simulation(config);
-        worldMap = new Equator(10, 10);
+        worldMap = new Equator(simulation);
     }
     @Test
     void testAnimalDied() {

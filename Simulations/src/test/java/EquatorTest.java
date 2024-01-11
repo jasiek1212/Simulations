@@ -11,26 +11,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EquatorTest {
     private Equator equator;
-    private SimulationConfig config;
     private Simulation simulation;
 
     @BeforeEach
     void setUp() {
-        config = new SimulationConfig(
-            new Vector2d(5,5),
-            5,
-            5,
-            3,
-            1,
-            1,
-            2,
-            1,
-            1,
-            0,
-            new Vector2d(0,0),
-            3);
+        SimulationConfig config = new SimulationConfig(
+                new Vector2d(10, 10),
+                5,
+                5,
+                3,
+                1,
+                1,
+                2,
+                1,
+                1,
+                0,
+                new Vector2d(0, 0),
+                3);
         simulation = new Simulation(config);
-        equator = new Equator(10, 10);
+        equator = new Equator(simulation);
     }
 
     @Test

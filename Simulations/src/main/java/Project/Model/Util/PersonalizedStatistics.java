@@ -20,7 +20,7 @@ public class PersonalizedStatistics {
         this.simulation = simulation;
     }
 
-    //Set Stats
+    //Change Stats
     public void atePlant(){plantsEaten += 1;}
     public void registerBirth(Animal animal){
         children.add(animal);

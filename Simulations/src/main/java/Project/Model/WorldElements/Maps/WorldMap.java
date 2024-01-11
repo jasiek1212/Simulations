@@ -22,11 +22,13 @@ public abstract class WorldMap {
     protected final GeneralStatistics statistics = new GeneralStatistics(this);
     protected final Set<Vector2d> grassPositions = new HashSet<>();
     protected final LinkedList<Animal> deadAnimals = new LinkedList<>();
+    protected final Simulation simulation;
 
 
-    protected WorldMap(int width, int height){
-        this.width = width;
-        this.height = height;
+    protected WorldMap(Simulation simulation){
+        this.width = simulation.getConfig().getMapDimensions().getX();
+        this.height = simulation.getConfig().getMapDimensions().getY();
+        this.simulation = simulation;
     }
 
     //Simulation Helpers
@@ -45,8 +47,8 @@ public abstract class WorldMap {
         return objectAt(position) != null;
     }
     public boolean isInside(Vector2d position) {
-        return position.getX() >= 0 && position.getX() < width &&
-                position.getY() >= 0 && position.getY() < height;
+        return position.getX() >= 0 && position.getX() <= width &&
+                position.getY() >= 0 && position.getY() <= height;
     }
     public void place(Animal animal){
         mapState.put(animal);
@@ -60,11 +62,8 @@ public abstract class WorldMap {
         grassPositions.add(grass.getPosition());
     }
     public void removePlant(Vector2d position) {
-        Grass grass = mapState.getPlants().get(position);
-        if (grass != null) {
-            mapState.getPlants().remove(position);
-            grassPositions.remove(position);
-        }
+        grassPositions.remove(position);
+        mapState.removePlant(position);
     }
     public void animalDied(Animal animal){
         deadAnimals.add(animal);
@@ -93,12 +92,12 @@ public abstract class WorldMap {
             }
         }
     }
-    public void breedAnimals(int breedingEnergy) {
+    public void breedAnimals() {
         for(Map.Entry<Vector2d, LinkedList<Animal>> entry : mapState.entrySet()){
             LinkedList<Animal> animalsAtPosition = entry.getValue();
             if(animalsAtPosition.size() >= 2){
                 Animal[] twoMostEnergetic = findTopTwoAnimals(animalsAtPosition);
-                if(twoMostEnergetic[1].getEnergy() > breedingEnergy) {
+                if(twoMostEnergetic[1].getEnergy() > simulation.getConfig().getBreedingEnergy()) {
                     Animal child = twoMostEnergetic[0].makeChild(twoMostEnergetic[1]);
                     this.place(child);
                 }
@@ -114,6 +113,7 @@ public abstract class WorldMap {
                 Animal animalToEat = findAnimalWithMaxEnergy(animalsAtPosition);
                 animalToEat.eatPlant();
                 grassPositions.remove(position);
+                mapState.removePlant(position);
 
             }
         }
@@ -165,34 +165,43 @@ public abstract class WorldMap {
 
         Animal maxEnergyAnimal = animals.getFirst();
         for (Animal animal : animals) {
-            if (animal.getEnergy() > maxEnergyAnimal.getEnergy()) {
+            maxEnergyAnimal = chooseBetterAnimal(maxEnergyAnimal, animal);
+        }
+        return maxEnergyAnimal;
+    }
+    private Animal chooseBetterAnimal(Animal maxEnergyAnimal, Animal animal) {
+        if (animal.getEnergy() > maxEnergyAnimal.getEnergy()) {
+            maxEnergyAnimal = animal;
+        } else if (animal.getEnergy() == maxEnergyAnimal.getEnergy()) {
+            if(simulation.getDays()-animal.getStats().whenBorn() > simulation.getDays()-maxEnergyAnimal.getStats().whenBorn()){
                 maxEnergyAnimal = animal;
             }
+            else if(simulation.getDays()-animal.getStats().whenBorn() == simulation.getDays()-maxEnergyAnimal.getStats().whenBorn()){
+                if(animal.getStats().childrenCount() > maxEnergyAnimal.getStats().childrenCount()){
+                    maxEnergyAnimal = animal;
+                }
+                else if(animal.getStats().childrenCount() == maxEnergyAnimal.getStats().childrenCount()){
+                    double random = Math.random();
+                    maxEnergyAnimal = random > 0.5 ? maxEnergyAnimal : animal;
+                }
+            }
         }
-
         return maxEnergyAnimal;
     }
     private Animal[] findTopTwoAnimals(LinkedList<Animal> animalList) {
         Animal[] topTwoAnimals = new Animal[2];
-        int maxEnergy = Integer.MIN_VALUE;
-
+        topTwoAnimals[0] = findAnimalWithMaxEnergy(animalList);
+        Animal secondBestAnimal = animalList.get(1);
         for (Animal animal : animalList) {
-            int energy = animal.getEnergy();
-
-            if (energy > maxEnergy) {
-                topTwoAnimals[1] = topTwoAnimals[0];
-                topTwoAnimals[0] = animal;
-                maxEnergy = energy;
-            } else if (topTwoAnimals[1] == null || energy > topTwoAnimals[1].getEnergy()) {
-                topTwoAnimals[1] = animal;
-            }
+            if(animal == topTwoAnimals[0]){continue;}
+            secondBestAnimal = chooseBetterAnimal(secondBestAnimal, animal);
         }
-
+        topTwoAnimals[1] = secondBestAnimal;
         return topTwoAnimals;
     }
 
     //Abstact
-    public abstract void spreadSeeds(int numberOfPlants);
+    public abstract void spreadSeeds();
 
 }
 
