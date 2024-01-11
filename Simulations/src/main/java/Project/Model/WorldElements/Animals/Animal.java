@@ -12,6 +12,11 @@ public abstract class Animal implements MapObject {
 
     protected Vector2d position;
     protected MapDirection direction;
+
+    public void setEnergy(int energy) {
+        this.energy = energy;
+    }
+
     protected int energy;
     protected static int currId;
     static {

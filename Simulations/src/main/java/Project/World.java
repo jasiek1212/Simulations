@@ -19,10 +19,5 @@ public class World {
         engine.runAsyncInThreadPool();
         engine.awaitSimulationsEnd();
 
-
-
     }
-
-
-
 }

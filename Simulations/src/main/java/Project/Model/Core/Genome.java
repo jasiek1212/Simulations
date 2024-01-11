@@ -15,11 +15,6 @@ public class Genome {
         this.currentGeneIndex = new Random().nextInt(this.size());
     }
 
-//    [1,6,5,2,6,1,3,2] 50 [4,2,5,1,5,1,6,3] 150
-//    ->prawa
-//    [1,6,5,1,5,1,6,3]
-//    -> mutacja
-//    [1,6,5,2,5,1,6,3]
     public Genome(int genomeLength){ //konstruktor dla zwierzęcia ktore jest stawiane pierwszego dnia
         this.genes = generateRandomGenes(genomeLength);
         this.currentGeneIndex = new Random().nextInt(this.size());
