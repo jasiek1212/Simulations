@@ -14,12 +14,13 @@
         public Jungle(Simulation simulation){
             super(simulation);
             initializePositions();
+            spreadSeeds();
         }
 
-        public void spreadSeeds(int numberOfPlants) {
+        public void spreadSeeds() {
             Random random = new Random();
 
-            for(int i = 0; i < numberOfPlants; i++){
+            for(int i = 0; i < simulation.getConfig().getNumberOfPlants(); i++){
                 boolean placed = false;
                 while (!placed) {
                     Vector2d position;

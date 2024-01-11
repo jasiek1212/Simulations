@@ -47,8 +47,8 @@ public abstract class WorldMap {
         return objectAt(position) != null;
     }
     public boolean isInside(Vector2d position) {
-        return position.getX() >= 0 && position.getX() < width &&
-                position.getY() >= 0 && position.getY() < height;
+        return position.getX() >= 0 && position.getX() <= width &&
+                position.getY() >= 0 && position.getY() <= height;
     }
     public void place(Animal animal){
         mapState.put(animal);
@@ -92,12 +92,12 @@ public abstract class WorldMap {
             }
         }
     }
-    public void breedAnimals(int breedingEnergy) {
+    public void breedAnimals() {
         for(Map.Entry<Vector2d, LinkedList<Animal>> entry : mapState.entrySet()){
             LinkedList<Animal> animalsAtPosition = entry.getValue();
             if(animalsAtPosition.size() >= 2){
                 Animal[] twoMostEnergetic = findTopTwoAnimals(animalsAtPosition);
-                if(twoMostEnergetic[1].getEnergy() > breedingEnergy) {
+                if(twoMostEnergetic[1].getEnergy() > simulation.getConfig().getBreedingEnergy()) {
                     Animal child = twoMostEnergetic[0].makeChild(twoMostEnergetic[1]);
                     this.place(child);
                 }
@@ -188,19 +188,20 @@ public abstract class WorldMap {
         }
         return maxEnergyAnimal;
     }
-    private Animal[] findTopTwoAnimals(LinkedList<Animal> animals) {
+    private Animal[] findTopTwoAnimals(LinkedList<Animal> animalList) {
         Animal[] topTwoAnimals = new Animal[2];
-        topTwoAnimals[0] = findAnimalWithMaxEnergy(animals);
-        Animal secondBestAnimal = animals.get(2);
-        for (Animal animal : animals) {
+        topTwoAnimals[0] = findAnimalWithMaxEnergy(animalList);
+        Animal secondBestAnimal = animalList.get(1);
+        for (Animal animal : animalList) {
             if(animal == topTwoAnimals[0]){continue;}
             secondBestAnimal = chooseBetterAnimal(secondBestAnimal, animal);
         }
+        topTwoAnimals[1] = secondBestAnimal;
         return topTwoAnimals;
     }
 
     //Abstact
-    public abstract void spreadSeeds(int numberOfPlants);
+    public abstract void spreadSeeds();
 
 }
 

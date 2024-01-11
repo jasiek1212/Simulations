@@ -16,7 +16,7 @@ class EquatorTest {
     @BeforeEach
     void setUp() {
         SimulationConfig config = new SimulationConfig(
-                new Vector2d(5, 5),
+                new Vector2d(10, 10),
                 5,
                 5,
                 3,
