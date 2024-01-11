@@ -6,7 +6,7 @@ import Project.Model.WorldElements.Animals.Animal;
 import Project.Model.WorldElements.Animals.AnimalStandard;
 import Project.Model.WorldElements.Maps.Equator;
 import Project.Model.WorldElements.Maps.WorldMap;
-import Project.Simulation;
+import Project.Simulations.Simulation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +16,6 @@ class AnimalTest {
     private Animal animal;
     private SimulationConfig config;
     private WorldMap map;
-    private Simulation simulation;
 
     @BeforeEach
     void setUp() {
@@ -29,9 +28,12 @@ class AnimalTest {
                 1,
                 2,
                 1,
-                1);
-        simulation = new Simulation(config);
-        map = new Equator(10,10);
+                1,
+                0,
+                new Vector2d(0,0),
+                3);
+        Simulation simulation = new Simulation(config);
+        map = new Equator(simulation);
         animal = new AnimalStandard(new Vector2d(2, 2), simulation);
     }
 

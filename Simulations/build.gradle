@@ -11,15 +11,19 @@ repositories {
     mavenCentral()
     javafx {
         version = "17"
-        modules = [ 'javafx.controls' ]
+        modules = ['javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.media', 'javafx.swing', 'javafx.web']
     }
 
+}
+
+application {
+    getMainClass().set('Project.World')
 }
 
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
-    implementation 'org.json:json:20210307'
+    implementation 'org.json:json:20231013'
 }
 
 test {

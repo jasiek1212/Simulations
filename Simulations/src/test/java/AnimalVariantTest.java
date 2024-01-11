@@ -2,7 +2,6 @@ import Project.Model.Core.SimulationConfig;
 import Project.Model.Core.Vector2d;
 import Project.Model.WorldElements.Animals.AnimalVariant;
 import Project.Model.WorldElements.Maps.Equator;
-import Project.Model.WorldElements.Maps.WorldMap;
 import Project.Simulations.Simulation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,14 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class AnimalVariantTest {
     private AnimalVariant animal;
     private Simulation simulation;
-    private SimulationConfig config;
     private Equator worldMap;
 
 
     @BeforeEach
     void setUp() {
-        config = new SimulationConfig(
-                new Vector2d(5,5),
+        SimulationConfig config = new SimulationConfig(
+                new Vector2d(5, 5),
                 5,
                 5,
                 3,
@@ -28,11 +26,11 @@ class AnimalVariantTest {
                 1,
                 1,
                 0,
-                new Vector2d(0,0),
+                new Vector2d(0, 0),
                 3);
         simulation = new Simulation(config);
         animal = new AnimalVariant(new Vector2d(1, 1), simulation);
-        worldMap = new Equator(10, 10);
+        worldMap = new Equator(simulation);
 
     }
 

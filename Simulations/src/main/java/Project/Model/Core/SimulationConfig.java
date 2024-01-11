@@ -15,15 +15,10 @@ public class SimulationConfig {
     private final int startingEnergy;
     private final int dailyEnergy;
     private final int energyFromPlant;
-
     private final int numberOfPlants;
-
     private final int behaviourVariant;
-
     private final int mapVariant;
-
     private final int startingNumberOfPlants;
-
     private final Vector2d mutationsNo;
     private final int breedingEnergy;
 
@@ -48,13 +43,13 @@ public class SimulationConfig {
         this.breedingEnergy = breedingEnergy;
     }
 
+    //Getters
     public int getBreedingEnergy(){
         return breedingEnergy;
     }
     public int getBehaviourVariant(){
         return behaviourVariant;
     }
-
     public int getNumberOfPlants() {
         return numberOfPlants;
     }
@@ -67,26 +62,22 @@ public class SimulationConfig {
     public int getAnimalsNum() {
         return animalsNum;
     }
-
     public int getGenomeLength() {
         return genomeLength;
     }
-
     public int getStartingEnergy() {
         return startingEnergy;
     }
-
     public int getDailyEnergy() {
         return dailyEnergy;
     }
-
     public int getEnergyFromPlant() {return energyFromPlant;}
-
     public Vector2d getMutationsNo(){
         return this.mutationsNo;
     }
-
     public int getStartingNumberOfPlants(){return startingNumberOfPlants;}
+
+    //Get config from JSON
     public static SimulationConfig get(){
         String filePath = new File("").getAbsolutePath();
 
