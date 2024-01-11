@@ -64,4 +64,8 @@ public class Vector2d{
     public static Vector2d randomVector(int width, int height){
         return new Vector2d(new Random().nextInt(width),new Random().nextInt(height));
     }
+
+    int difference(){
+        return this.y - this.x;
+    }
 }

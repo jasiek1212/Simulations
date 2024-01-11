@@ -1,0 +1,16 @@
+{
+  "MapWidth" : 5,
+  "MapHeight" : 5,
+  "animalsNum": 10,
+  "genomeLength": 5,
+  "startingEnergy" : 10,
+  "dailyEnergy" : 2,
+  "energyFromPlant" : 2,
+  "StartingNumberOfPlants" : 5,
+  "dailyPlantsIncrease" : 5,
+  "mapVariant" : 0,
+  "behaviourVariant" : 0,
+  "minimumMutations" : 0,
+  "maximumMutations": 2,
+  "breedingEnergy" : 2
+}

@@ -3,9 +3,8 @@ package Project.Model.WorldElements.Animals;
 import Project.Model.Core.Genome;
 import Project.Model.Core.Vector2d;
 import Project.Model.Enums.MapDirection;
-import Project.Model.WorldElements.MapObject;
 import Project.Model.WorldElements.Maps.WorldMap;
-import Project.Simulation;
+import Project.Simulations.Simulation;
 
 
 
@@ -22,6 +21,7 @@ public class AnimalStandard extends Animal {
     public boolean move(WorldMap globe){
         if(this.energy < simulation.getConfig().getDailyEnergy()){
             globe.animalDied(this);
+
             return false;
         }
         else {
@@ -36,6 +36,16 @@ public class AnimalStandard extends Animal {
             this.energy = this.energy-simulation.getConfig().getDailyEnergy();
             return true;
         }
+    }
+
+    @Override
+    public Animal makeChild(Animal other){
+        Animal child = new AnimalStandard(this.position,this.genome,this.energy,other.genome, other.energy,this.simulation);
+        this.tiredFromBreeding();
+        other.tiredFromBreeding();
+        this.stats.registerBirth(child);
+        other.stats.registerBirth(child);
+        return child;
     }
 }
 

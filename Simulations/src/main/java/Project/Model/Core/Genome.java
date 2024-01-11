@@ -1,6 +1,8 @@
 package Project.Model.Core;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class Genome {
 
@@ -10,6 +12,7 @@ public class Genome {
 
     public Genome(byte[] genes){
         this.genes = genes;
+        this.currentGeneIndex = new Random().nextInt(this.size());
     }
 
 //    [1,6,5,2,6,1,3,2] 50 [4,2,5,1,5,1,6,3] 150
@@ -22,7 +25,7 @@ public class Genome {
         this.currentGeneIndex = new Random().nextInt(this.size());
     }
 
-    public static Genome breed(Genome genome1, int energy1, Genome genome2, int energy2){
+    public static Genome breed(Genome genome1, int energy1, Genome genome2, int energy2, SimulationConfig config){
         int numsOfFirst = energy1/(energy1+energy2)*genome1.size();
         boolean left = Math.random() <= 0.5;
         boolean firstMoreEnergetic = energy1 > energy2;
@@ -43,14 +46,23 @@ public class Genome {
                 childGenes[i+numsOfFirst] = genome2.getGenes()[i];
             }
         }
-        childGenes = Genome.mutate(childGenes);
+        childGenes = Genome.mutate(childGenes, config);
         return new Genome(childGenes);
     }
 
-    private static byte[] mutate(byte[] genes){
-        int geneToMutate = new Random().nextInt(genes.length);
-        byte swapToDifferentGene = (byte) new Random().nextInt(7);
-        genes[geneToMutate] = (byte) ((genes[geneToMutate]+swapToDifferentGene)%7);
+    private static byte[] mutate(byte[] genes, SimulationConfig config){
+        int numberOfGenesToMutate = new Random().nextInt(config.getMutationsNo().difference());
+        Set<Integer> alreadyMutated = new HashSet<>();
+        for(int i=0;i<numberOfGenesToMutate;i++){
+            int geneToMutate = new Random().nextInt(genes.length);
+            while(alreadyMutated.contains(geneToMutate)){
+                geneToMutate = new Random().nextInt(genes.length);
+            }
+            alreadyMutated.add(geneToMutate);
+            byte swapToDifferentGene = (byte) new Random().nextInt(8);
+            genes[geneToMutate] = (byte) ((genes[geneToMutate]+swapToDifferentGene)%8);
+
+        }
         return genes;
     }
 

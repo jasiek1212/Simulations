@@ -4,7 +4,7 @@ import Project.Model.Core.Genome;
 import Project.Model.Core.Vector2d;
 import Project.Model.Enums.MapDirection;
 import Project.Model.WorldElements.Maps.WorldMap;
-import Project.Simulation;
+import Project.Simulations.Simulation;
 
 public class AnimalVariant extends Animal{
 
@@ -46,5 +46,15 @@ public class AnimalVariant extends Animal{
             this.energy = this.energy-simulation.getConfig().getDailyEnergy();
             return true;
         }
+    }
+
+    @Override
+    public Animal makeChild(Animal other){
+        Animal child = new AnimalVariant(this.position,this.genome,this.energy,other.genome, other.energy,this.simulation);
+        this.tiredFromBreeding();
+        other.tiredFromBreeding();
+        this.stats.registerBirth(child);
+        other.stats.registerBirth(child);
+        return child;
     }
 }

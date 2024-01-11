@@ -1,27 +1,23 @@
 package Project;
 import Project.Model.Core.*;
 
-import java.io.File;
+import Project.Simulations.Simulation;
+import Project.Simulations.SimulationEngine;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 public class World {
 
-    public static void main(String[] args){
-        String filePath = new File("").getAbsolutePath();
-        System.out.println (filePath);
+    public static void main(String[] args) throws InterruptedException {
 
-        SimulationConfig config = new SimulationConfig(
-                new Vector2d(5,5),
-                5,
-                5,
-                3,
-                1,
-                1,
-                2,
-                1,
-                1);
-        Simulation sim = new Simulation(config);
-        sim.simulate();
+        SimulationConfig config = SimulationConfig.get();
+
+        SimulationEngine engine = new SimulationEngine(List.of(new Simulation(config)));
+
+        engine.runAsyncInThreadPool();
+        engine.awaitSimulationsEnd();
 
 
 

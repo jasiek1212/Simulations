@@ -1,15 +1,15 @@
-package Project;
+package Project.Simulations;
 
 import Project.Model.Core.SimulationConfig;
 import Project.Model.WorldElements.Maps.Equator;
 import Project.Model.WorldElements.Maps.Jungle;
 import Project.Model.WorldElements.Maps.WorldMap;
 
-public class Simulation {
+public class Simulation implements Runnable {
 
     private final SimulationConfig config;
     //config: <mapDimensions, animalsNum, genomeLength, startingEnergy, dailyEnergy>
-    private int days = 0;
+    int days = 0;
     public Simulation(SimulationConfig config){
         this.config = config;
     }
@@ -18,7 +18,9 @@ public class Simulation {
         return config;
     }
 
-    public void simulate(){
+    public int getDays() { return days;}
+
+    public void run(){
         WorldMap map = switch(config.getMapVariant()){
             case 0 -> new Equator(config.getMapDimensions().getX(), config.getMapDimensions().getY());
             case 1 -> new Jungle(config.getMapDimensions().getX(), config.getMapDimensions().getY());
@@ -31,10 +33,12 @@ public class Simulation {
         while(!map.allDead()){
             System.out.println(map.getMapState());
             System.out.println(map);
-            map.spreadSeeds(config.getNumberOfPlants());
+            map.clearDeadAnimals();
             map.moveAnimals();
             map.animalsEat();
-            map.clearDeadAnimals();
+            map.breedAnimals(config.getBreedingEnergy());
+            map.spreadSeeds(config.getNumberOfPlants());
+            days++;
         }
 
     }

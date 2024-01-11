@@ -2,13 +2,14 @@ package Project.Model.WorldElements.Maps;
 
 import Project.Model.Core.MapState;
 import Project.Model.Core.Vector2d;
+import Project.Model.Util.GeneralStatistics;
 import Project.Model.Util.MapVisualizer;
 import Project.Model.WorldElements.Animals.Animal;
 import Project.Model.WorldElements.Animals.AnimalStandard;
 import Project.Model.WorldElements.Animals.AnimalVariant;
 import Project.Model.WorldElements.Grass;
 import Project.Model.WorldElements.MapObject;
-import Project.Simulation;
+import Project.Simulations.Simulation;
 
 import java.util.*;
 
@@ -22,16 +23,22 @@ public abstract class WorldMap {
     protected final List<Animal> animals = new LinkedList<>();
 
     protected final MapState mapState = new MapState();
-
+    protected final GeneralStatistics statistics = new GeneralStatistics(this);
 
     protected final Set<Vector2d> grassPositions = new HashSet<>();
 
     protected final LinkedList<Animal> deadAnimals = new LinkedList<>();
 
+
     protected WorldMap(int width, int height){
         this.width = width;
         this.height = height;
     }
+
+    public List<Animal> getAnimals(){
+        return animals;
+    }
+    public int getGrassCount(){return grassPositions.size();}
 
     public MapObject objectAt(Vector2d position){
         LinkedList<Animal> animalsAtPosition = mapState.get(position);
@@ -86,6 +93,7 @@ public abstract class WorldMap {
     }
     public void animalDied(Animal animal){
         deadAnimals.add(animal);
+        statistics.registerDeath(animal);
     }
 
     public boolean allDead(){
@@ -98,6 +106,19 @@ public abstract class WorldMap {
 
             if (currAnimal.move(this)) {
                 mapState.put(currAnimal);
+            }
+        }
+    }
+
+    public void breedAnimals(int breedingEnergy) {
+        for(Map.Entry<Vector2d, LinkedList<Animal>> entry : mapState.entrySet()){
+            LinkedList<Animal> animalsAtPosition = entry.getValue();
+            if(animalsAtPosition.size() >= 2){
+                Animal[] twoMostEnergetic = findTopTwoAnimals(animalsAtPosition);
+                if(twoMostEnergetic[1].getEnergy() > breedingEnergy) {
+                    Animal child = twoMostEnergetic[0].makeChild(twoMostEnergetic[1]);
+                    this.place(child);
+                }
             }
         }
     }
@@ -128,6 +149,25 @@ public abstract class WorldMap {
         }
 
         return maxEnergyAnimal;
+    }
+
+    private static Animal[] findTopTwoAnimals(LinkedList<Animal> animalList) {
+        Animal[] topTwoAnimals = new Animal[2];
+        int maxEnergy = Integer.MIN_VALUE;
+
+        for (Animal animal : animalList) {
+            int energy = animal.getEnergy();
+
+            if (energy > maxEnergy) {
+                topTwoAnimals[1] = topTwoAnimals[0];
+                topTwoAnimals[0] = animal;
+                maxEnergy = energy;
+            } else if (topTwoAnimals[1] == null || energy > topTwoAnimals[1].getEnergy()) {
+                topTwoAnimals[1] = animal;
+            }
+        }
+
+        return topTwoAnimals;
     }
     public void clearDeadAnimals(){
         for(Animal animal : deadAnimals){

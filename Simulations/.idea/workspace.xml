@@ -4,15 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3aadde26-29b2-476d-89ee-2df8ba1f72e0" name="Changes" comment="Animals move according to genotype">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="3aadde26-29b2-476d-89ee-2df8ba1f72e0" name="Changes" comment="first draft backend">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Util/GeneralStatistics.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Util/PersonalizedStatistics.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Project/Simulations/SimulationEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/MapState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/MapState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/Genome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/Genome.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/SimulationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/SimulationConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Grass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/WorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/WorldMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/Vector2d.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/Vector2d.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/AnimalStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/AnimalStandard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/AnimalVariant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/AnimalVariant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Maps/WorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Maps/WorldMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Simulations/Simulation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +47,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="package.json" />
         <option value="Class" />
       </list>
     </option>
@@ -48,7 +55,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="DevBranch" />
+        <entry key="$PROJECT_DIR$/.." value="BranchJasia2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -62,22 +69,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;BranchMacka&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "DevBranch",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Project.Model.Core" />
@@ -100,6 +108,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.World" />
         <item itemvalue="Application.World" />
       </list>
     </recent_temporary>
@@ -140,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703235819824</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="first draft backend">
+      <option name="closed" value="true" />
+      <created>1704896946444</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1704896946444</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +183,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Base" />
     <MESSAGE value="Animals move according to genotype" />
-    <option name="LAST_COMMIT_MESSAGE" value="Animals move according to genotype" />
+    <MESSAGE value="Behavior variants" />
+    <MESSAGE value="first draft backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="first draft backend" />
   </component>
 </project>
