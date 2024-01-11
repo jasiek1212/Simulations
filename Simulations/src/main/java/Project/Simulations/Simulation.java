@@ -8,18 +8,12 @@ import Project.Model.WorldElements.Maps.WorldMap;
 public class Simulation implements Runnable {
 
     private final SimulationConfig config;
-    //config: <mapDimensions, animalsNum, genomeLength, startingEnergy, dailyEnergy>
     int days = 0;
     public Simulation(SimulationConfig config){
         this.config = config;
     }
 
-    public SimulationConfig getConfig() {
-        return config;
-    }
-
-    public int getDays() { return days;}
-
+    //Run simulation
     public void run(){
         WorldMap map = switch(config.getMapVariant()){
             case 0 -> new Equator(config.getMapDimensions().getX(), config.getMapDimensions().getY());
@@ -42,4 +36,10 @@ public class Simulation implements Runnable {
         }
 
     }
+
+    //Getters
+    public SimulationConfig getConfig() {
+        return config;
+    }
+    public int getDays() { return days;}
 }

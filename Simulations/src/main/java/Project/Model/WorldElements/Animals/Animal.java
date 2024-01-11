@@ -12,11 +12,6 @@ public abstract class Animal implements MapObject {
 
     protected Vector2d position;
     protected MapDirection direction;
-
-    public void setEnergy(int energy) {
-        this.energy = energy;
-    }
-
     protected int energy;
     protected static int currId;
     static {
@@ -36,7 +31,8 @@ public abstract class Animal implements MapObject {
         this.stats = new PersonalizedStatistics(simulation);
     }
 
-    public Animal(Vector2d position, Genome genome1, int energy1, Genome genome2, int energy2, Simulation simulation){
+    public Animal(Vector2d position, Genome genome1, int energy1, Genome genome2,
+                  int energy2, Simulation simulation){
         this.direction = MapDirection.randomDirection();
         this.position = position;
         this.genome = Genome.breed(genome1, energy1, genome2, energy2, simulation.getConfig());
@@ -46,39 +42,38 @@ public abstract class Animal implements MapObject {
         this.stats = new PersonalizedStatistics(simulation);
     }
 
+    //Abstract
     public abstract Animal makeChild(Animal other);
+    public abstract boolean move(WorldMap globe);
 
+    //Getters, Setters
     protected void tiredFromBreeding(){
         this.energy -= this.simulation.getConfig().getBreedingEnergy();
     }
     public PersonalizedStatistics getStats(){return stats;}
-
-    public abstract boolean move(WorldMap globe);
-
     public Vector2d getPosition(){
         return this.position;
     }
-
     public MapDirection getDirection(){
         return this.direction;
     }
-
     public int getEnergy(){
         return this.energy;
     }
-
+    public void setEnergy(int energy) {
+        this.energy = energy;
+    }
     public byte[] getGenome(){
         return this.genome.getGenes();
     }
-
     public String toString(){
         return String.valueOf(this.id);
     }
 
+    //Statistics
     public void die(){
         this.stats.die();
     }
-
     public void eatPlant() {
         this.energy += simulation.getConfig().getEnergyFromPlant();
         this.stats.atePlant();

@@ -15,34 +15,12 @@ import java.util.*;
 
 public abstract class WorldMap {
     public static final Vector2d MAP_BEGINNING = new Vector2d(0,0);
-
-    public int getWidth() {
-        return width;
-    }
-
     protected final int width;
-
-    public int getHeight() {
-        return height;
-    }
-
     protected final int height;
-
-    public List<Animal> getAnimals() {
-        return animals;
-    }
-
     protected final List<Animal> animals = new LinkedList<>();
-
     protected final MapState mapState = new MapState();
     protected final GeneralStatistics statistics = new GeneralStatistics(this);
-
     protected final Set<Vector2d> grassPositions = new HashSet<>();
-
-    public LinkedList<Animal> getDeadAnimals() {
-        return deadAnimals;
-    }
-
     protected final LinkedList<Animal> deadAnimals = new LinkedList<>();
 
 
@@ -51,11 +29,7 @@ public abstract class WorldMap {
         this.height = height;
     }
 
-    public List<Animal> getAnimals(){
-        return animals;
-    }
-    public int getGrassCount(){return grassPositions.size();}
-
+    //Simulation Helpers
     public MapObject objectAt(Vector2d position){
         LinkedList<Animal> animalsAtPosition = mapState.get(position);
 
@@ -67,27 +41,12 @@ public abstract class WorldMap {
 
         return null;
     }
-
-
     public boolean isOccupied(Vector2d position){
         return objectAt(position) != null;
     }
-
-    public void placeAnimals(int amount, Simulation simulation){
-        for(int i=0;i<amount;i++){
-            this.place(switch(simulation.getConfig().getBehaviourVariant()){
-                case 1 -> new AnimalVariant(Vector2d.randomVector(this.width,this.height),simulation);
-                default -> new AnimalStandard(Vector2d.randomVector(this.width,this.height),simulation);
-            });
-        }
-    }
-
     public boolean isInside(Vector2d position) {
         return position.getX() >= 0 && position.getX() < width &&
                 position.getY() >= 0 && position.getY() < height;
-    }
-    public MapState getMapState(){
-        return this.mapState;
     }
     public void place(Animal animal){
         mapState.put(animal);
@@ -111,9 +70,18 @@ public abstract class WorldMap {
         deadAnimals.add(animal);
         statistics.registerDeath(animal);
     }
-
     public boolean allDead(){
         return animals.isEmpty();
+    }
+
+    //Simulation Methods
+    public void placeAnimals(int amount, Simulation simulation){
+        for(int i=0;i<amount;i++){
+            this.place(switch(simulation.getConfig().getBehaviourVariant()){
+                case 1 -> new AnimalVariant(Vector2d.randomVector(this.width,this.height),simulation);
+                default -> new AnimalStandard(Vector2d.randomVector(this.width,this.height),simulation);
+            });
+        }
     }
     public void moveAnimals() {
 
@@ -125,7 +93,6 @@ public abstract class WorldMap {
             }
         }
     }
-
     public void breedAnimals(int breedingEnergy) {
         for(Map.Entry<Vector2d, LinkedList<Animal>> entry : mapState.entrySet()){
             LinkedList<Animal> animalsAtPosition = entry.getValue();
@@ -151,7 +118,46 @@ public abstract class WorldMap {
             }
         }
     }
+    public void clearDeadAnimals(){
+        for(Animal animal : deadAnimals){
+            this.animals.remove(animal);
+        }
+        deadAnimals.clear();
+    }
 
+    //Map Boundaries Checker
+    public boolean crossedThePole(Vector2d position){
+        return position.getY() > this.height || position.getY() < 0;
+    }
+    public Vector2d aroundTheGlobe(Vector2d position){
+        if(position.getX() < 0){return new Vector2d(width,position.getY());}
+        if(position.getX() > width){return new Vector2d(0, position.getY());}
+        return position;
+    }
+
+    //Getters
+    public LinkedList<Animal> getDeadAnimals() {
+        return deadAnimals;
+    }
+    public MapState getMapState(){
+        return this.mapState;
+    }
+    public List<Animal> getAnimals() {
+        return animals;
+    }
+    public int getWidth() {
+        return width;
+    }
+    public int getGrassCount(){return grassPositions.size();}
+    public int getHeight() {
+        return height;
+    }
+    public String toString() {
+        MapVisualizer map= new MapVisualizer(this);
+        return map.draw(MAP_BEGINNING,new Vector2d(this.width,this.height));
+    }
+
+    //Helper
     private Animal findAnimalWithMaxEnergy(LinkedList<Animal> animals) {
         if (animals.isEmpty()) {
             return null;
@@ -166,8 +172,7 @@ public abstract class WorldMap {
 
         return maxEnergyAnimal;
     }
-
-    private static Animal[] findTopTwoAnimals(LinkedList<Animal> animalList) {
+    private Animal[] findTopTwoAnimals(LinkedList<Animal> animalList) {
         Animal[] topTwoAnimals = new Animal[2];
         int maxEnergy = Integer.MIN_VALUE;
 
@@ -185,27 +190,9 @@ public abstract class WorldMap {
 
         return topTwoAnimals;
     }
-    public void clearDeadAnimals(){
-        for(Animal animal : deadAnimals){
-            this.animals.remove(animal);
-        }
-        deadAnimals.clear();
-    }
 
-    public boolean crossedThePole(Vector2d position){
-        return position.getY() > this.height || position.getY() < 0;
-    }
-
-    public Vector2d aroundTheGlobe(Vector2d position){
-        if(position.getX() < 0){return new Vector2d(width,position.getY());}
-        if(position.getX() > width){return new Vector2d(0, position.getY());}
-        return position;
-    }
-
-    public String toString() {
-        MapVisualizer map= new MapVisualizer(this);
-        return map.draw(MAP_BEGINNING,new Vector2d(this.width,this.height));
-    }
+    //Abstact
     public abstract void spreadSeeds(int numberOfPlants);
+
 }
 

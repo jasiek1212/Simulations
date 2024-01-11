@@ -9,7 +9,6 @@ import Project.Simulations.Simulation;
 public class AnimalVariant extends Animal{
 
     private boolean genomeDirection = true;
-
     public AnimalVariant(Vector2d position, Simulation simulation){
         super(position, simulation);
     }

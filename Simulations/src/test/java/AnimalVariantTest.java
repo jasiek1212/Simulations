@@ -3,7 +3,7 @@ import Project.Model.Core.Vector2d;
 import Project.Model.WorldElements.Animals.AnimalVariant;
 import Project.Model.WorldElements.Maps.Equator;
 import Project.Model.WorldElements.Maps.WorldMap;
-import Project.Simulation;
+import Project.Simulations.Simulation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,7 +26,10 @@ class AnimalVariantTest {
                 1,
                 2,
                 1,
-                1);
+                1,
+                0,
+                new Vector2d(0,0),
+                3);
         simulation = new Simulation(config);
         animal = new AnimalVariant(new Vector2d(1, 1), simulation);
         worldMap = new Equator(10, 10);

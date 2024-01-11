@@ -4,7 +4,7 @@ import Project.Model.WorldElements.Animals.Animal;
 import Project.Model.WorldElements.Animals.AnimalStandard;
 import Project.Model.WorldElements.Grass;
 import Project.Model.WorldElements.Maps.Jungle;
-import Project.Simulation;
+import Project.Simulations.Simulation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,7 +24,10 @@ class JungleTest {
                 1,
                 2,
                 1,
-                1);
+                1,
+                0,
+                new Vector2d(0,0),
+                3);
         simulation = new Simulation(config);
         jungle = new Jungle(10, 10);
 

@@ -7,7 +7,6 @@ import java.util.Set;
 public class Genome {
 
     private final byte[] genes;
-
     private int currentGeneIndex;
 
     public Genome(byte[] genes){
@@ -15,7 +14,7 @@ public class Genome {
         this.currentGeneIndex = new Random().nextInt(this.size());
     }
 
-    public Genome(int genomeLength){ //konstruktor dla zwierzęcia ktore jest stawiane pierwszego dnia
+    public Genome(int genomeLength){
         this.genes = generateRandomGenes(genomeLength);
         this.currentGeneIndex = new Random().nextInt(this.size());
     }
@@ -61,25 +60,29 @@ public class Genome {
         return genes;
     }
 
+    //Change active genes
     public void nextGene(){
         currentGeneIndex = (currentGeneIndex+1)%this.size();
     }
-
-    public int getCurrentGeneIndex(){
-        return currentGeneIndex;
-    }
-
     public void prevGene(){
         currentGeneIndex = (currentGeneIndex-1)%this.size();
     }
+
+
+    //Getters
+    public int getCurrentGeneIndex(){
+        return currentGeneIndex;
+    }
+    public byte[] getGenes(){
+        return this.genes;
+    }
+
+
 
     public int getGene(){
         return this.genes[currentGeneIndex];
     }
 
-    public byte[] getGenes(){
-        return this.genes;
-    }
 
     public int size(){
         return this.genes.length;

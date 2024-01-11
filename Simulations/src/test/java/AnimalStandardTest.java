@@ -4,7 +4,7 @@ import Project.Model.Core.SimulationConfig;
 import Project.Model.Core.Vector2d;
 import Project.Model.WorldElements.Animals.AnimalStandard;
 import Project.Model.WorldElements.Maps.Equator;
-import Project.Simulation;
+import Project.Simulations.Simulation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +25,10 @@ class AnimalStandardTest {
                 1,
                 2,
                 1,
-                1);
+                1,
+                0,
+                new Vector2d(0,0),
+                3);
         simulation = new Simulation(config);
         animal = new AnimalStandard(new Vector2d(2, 2), simulation);
         worldMap = new Equator(10, 10);

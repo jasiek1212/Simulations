@@ -10,8 +10,8 @@ public class PersonalizedStatistics {
 
     private final int dayOfBirth;
     private int dayOfDeath = -1;
-    private List<Animal> children = new ArrayList<>();
-    private Simulation simulation;
+    private final List<Animal> children = new ArrayList<>();
+    private final Simulation simulation;
     private int plantsEaten = 0;
 
     public PersonalizedStatistics(Simulation simulation){
@@ -20,16 +20,19 @@ public class PersonalizedStatistics {
         this.simulation = simulation;
     }
 
+    //Set Stats
     public void atePlant(){plantsEaten += 1;}
-    public int howManyPlantsAte(){return plantsEaten;}
-    public int whenBorn(){return dayOfBirth;}
-    public int whenDied(){return dayOfDeath;}
     public void registerBirth(Animal animal){
         children.add(animal);
     }
-    public List<Animal> getChildren(){return children;}
-    public int childrenCount(){return children.size();}
     public void die(){
         this.dayOfDeath = simulation.getDays();
     }
+
+    //Get Stats
+    public int childrenCount(){return children.size();}
+    public List<Animal> getChildren(){return children;}
+    public int howManyPlantsAte(){return plantsEaten;}
+    public int whenBorn(){return dayOfBirth;}
+    public int whenDied(){return dayOfDeath;}
 }

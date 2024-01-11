@@ -13,7 +13,9 @@ public class AnimalStandard extends Animal {
     public AnimalStandard(Vector2d position, Simulation simulation){
         super(position, simulation);
     }
-    public AnimalStandard(Vector2d position, Genome genome1, int energy1, Genome genome2, int energy2, Simulation simulation){
+    public AnimalStandard(Vector2d position,
+                          Genome genome1, int energy1, Genome genome2,
+                          int energy2, Simulation simulation){
         super(position, genome1, energy1, genome2, energy2, simulation);
     }
 

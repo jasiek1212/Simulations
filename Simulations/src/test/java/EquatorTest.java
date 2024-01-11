@@ -4,7 +4,7 @@ import Project.Model.WorldElements.Animals.Animal;
 import Project.Model.WorldElements.Animals.AnimalStandard;
 import Project.Model.WorldElements.Grass;
 import Project.Model.WorldElements.Maps.Equator;
-import Project.Simulation;
+import Project.Simulations.Simulation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,7 +25,10 @@ class EquatorTest {
             1,
             2,
             1,
-            1);
+            1,
+            0,
+            new Vector2d(0,0),
+            3);
         simulation = new Simulation(config);
         equator = new Equator(10, 10);
     }
