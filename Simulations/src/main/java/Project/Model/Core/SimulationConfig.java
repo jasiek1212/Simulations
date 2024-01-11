@@ -92,7 +92,7 @@ public class SimulationConfig {
 
         String jsonContent = null;
         try {
-            jsonContent = new String(Files.readAllBytes(Paths.get(filePath + "/src/main/java/Project/Model/Core/config.json")));
+            jsonContent = new String(Files.readAllBytes(Paths.get(filePath + "/Simulations/src/main/java/Project/Model/Core/config.json")));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
