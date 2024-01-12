@@ -20,22 +20,19 @@ public class Equator extends WorldMap{
         Random random = new Random();
 
         for (int i = 0; i < simulation.getConfig().getNumberOfPlants(); i++) {
+            if(grassPositions.size() == (width+1)*(height+1)){break;}
             boolean placed = false;
             while (!placed) {
                 Vector2d position;
-                if (random.nextDouble() < 0.8 && !preferredPositions.isEmpty()) {
+                if (random.nextDouble() < 0.8) {
                     position = preferredPositions.get(random.nextInt(preferredPositions.size()));
-                } else if (!unpreferredPositions.isEmpty()) {
-                    position = unpreferredPositions.get(random.nextInt(unpreferredPositions.size()));
                 } else {
-                    break;
+                    position = unpreferredPositions.get(random.nextInt(unpreferredPositions.size()));
                 }
 
                 if (!grassPositions.contains(position)) {
                     this.placePlant(new Grass(position));
                     placed = true;
-                    preferredPositions.remove(position);
-                    unpreferredPositions.remove(position);
                 }
             }
         }

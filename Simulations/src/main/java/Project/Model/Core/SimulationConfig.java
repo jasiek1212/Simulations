@@ -83,7 +83,7 @@ public class SimulationConfig {
 
         String jsonContent = null;
         try {
-            jsonContent = new String(Files.readAllBytes(Paths.get(filePath + "/Simulations/src/main/java/Project/Model/Core/config.json")));
+            jsonContent = new String(Files.readAllBytes(Paths.get(filePath + "/src/main/java/Project/Model/Core/config.json")));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -93,11 +93,16 @@ public class SimulationConfig {
 
         return new SimulationConfig(
                 new Vector2d(jsonObject.getInt("MapWidth"),jsonObject.getInt("MapHeight")),
-                jsonObject.getInt("animalsNum"), jsonObject.getInt("genomeLength"),
-                jsonObject.getInt("startingEnergy"), jsonObject.getInt("dailyEnergy"), jsonObject.getInt("energyFromPlant"),
-                jsonObject.getInt("StartingNumberOfPlants"), jsonObject.getInt("dailyPlantsIncrease"),
-                jsonObject.getInt("mapVariant"), jsonObject.getInt("behaviourVariant"),
-                new Vector2d(jsonObject.getInt("minimumMutations"),jsonObject.getInt("maximumMutations")),
+                jsonObject.getInt("animalsNum"),
+                jsonObject.getInt("genomeLength"),
+                jsonObject.getInt("startingEnergy"),
+                jsonObject.getInt("dailyEnergy"),
+                jsonObject.getInt("energyFromPlant"),
+                jsonObject.getInt("numberOfPlants"),
+                jsonObject.getInt("startingPlants"),
+                jsonObject.getInt("mapVariant"),
+                jsonObject.getInt("behaviourVariant"),
+                new Vector2d(jsonObject.getInt("minimumMutationsNo"), jsonObject.getInt("maximumMutationsNo")),
                 jsonObject.getInt("breedingEnergy"));
     }
 }

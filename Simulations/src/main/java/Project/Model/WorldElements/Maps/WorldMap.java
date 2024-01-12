@@ -200,7 +200,8 @@ public abstract class WorldMap {
         return topTwoAnimals;
     }
 
-    //Abstact
+
+    //Abstract
     public abstract void spreadSeeds();
 
 }
