@@ -66,8 +66,8 @@ public abstract class WorldMap {
         mapState.removePlant(position);
     }
     public void animalDied(Animal animal){
-        deadAnimals.add(animal);
-        statistics.registerDeath(animal);
+        this.deadAnimals.add(animal);
+        this.statistics.registerDeath(animal);
     }
     public boolean allDead(){
         return animals.isEmpty();
@@ -89,6 +89,10 @@ public abstract class WorldMap {
 
             if (currAnimal.move(this)) {
                 mapState.put(currAnimal);
+            }
+            else
+            {
+                this.animalDied(currAnimal);
             }
         }
     }
@@ -119,10 +123,10 @@ public abstract class WorldMap {
         }
     }
     public void clearDeadAnimals(){
-        for(Animal animal : deadAnimals){
+        for(Animal animal : this.deadAnimals){
             this.animals.remove(animal);
         }
-        deadAnimals.clear();
+        this.deadAnimals.clear();
     }
 
     //Map Boundaries Checker

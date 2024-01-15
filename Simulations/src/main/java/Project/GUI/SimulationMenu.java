@@ -1,18 +1,19 @@
 package Project.GUI;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import Project.Model.Core.SimulationConfig;
-import Project.Model.Core.Vector2d;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -46,7 +47,7 @@ public class SimulationMenu extends Application {
         TextField mapBehaviourVariant = new TextField();
         mapBehaviourVariant.setPromptText("Rodzaj zachowania");
         TextField mapMaxMutationsNo = new TextField();
-        mapMaxMutationsNo.setPromptText("Maks. iczba mutacji");
+        mapMaxMutationsNo.setPromptText("Maks. liczba mutacji");
         TextField mapMinMutationsNo = new TextField();
         mapMinMutationsNo.setPromptText("Min. liczba mutacji");
         TextField mapBreedingEnergy = new TextField();
@@ -54,48 +55,50 @@ public class SimulationMenu extends Application {
 
         ExecutorService executorService = Executors.newFixedThreadPool(4);
 
-        Button startButton = new Button("Start Simulation");
-        startButton.setOnAction(e -> startSimulation(mapWidthField.getText(), mapHeightField.getText(), mapAnimalsNum.getText(),
+        Button startButtonWithNewConfig = new Button("Start simulation with this configuration");
+        startButtonWithNewConfig.setOnAction(e -> startSimulation(List.of(mapWidthField.getText(), mapHeightField.getText(), mapAnimalsNum.getText(),
                 mapGenomeLength.getText(), mapStartingEnergy.getText(), mapDailyEnergy.getText(), mapEnergyFromPlant.getText(),
                 mapNumberOfPlants.getText(), mapStartingPlants.getText(), mapVariant.getText(), mapBehaviourVariant.getText(),
-                mapMinMutationsNo.getText(), mapMaxMutationsNo.getText() ,mapBreedingEnergy.getText()));
+                mapMinMutationsNo.getText(), mapMaxMutationsNo.getText() ,mapBreedingEnergy.getText())));
+
+        Button startButtonWithOldConfig = new Button("Start simulation with old configuration");
+        startButtonWithOldConfig.setOnAction(e -> startSimWithOldConfig());
+
         // ... logika przycisku do uruchamiania symulacji z wybranymi ustawieniami
 
         layout.getChildren().addAll(new Label("Konfiguracja symulacji"), mapWidthField, mapHeightField, mapAnimalsNum, mapGenomeLength,
                 mapStartingEnergy,mapDailyEnergy,mapEnergyFromPlant,mapNumberOfPlants,mapStartingPlants, mapVariant,
-                mapBehaviourVariant, mapMinMutationsNo, mapMaxMutationsNo, mapBreedingEnergy, startButton);
+                mapBehaviourVariant, mapMinMutationsNo, mapMaxMutationsNo, mapBreedingEnergy, startButtonWithNewConfig,
+                startButtonWithOldConfig);
 
-        Scene scene = new Scene(layout, 800, 800);
+        Scene scene = new Scene(layout, 600, 800);
         stage.setTitle("Menu Symulacji");
         stage.setScene(scene);
         stage.show();
     }
-    private void startSimulation(String width, String height, String animalsNum, String genomeLength, String startingEnergy, String dailyEnergy,
-                                 String energyFromPlant, String numberOfPlants, String startingPlants, String mapVariant, String behaviourVariant,
-                                 String minMutationsNo, String maxMutationsNo, String breedingEnergy) {
-        SimulationConfig config = null;
+    private void startSimulation(List<String> args) {
+        String errorMSG = "";
+
+        for(String arg : args){
+            try{
+                Integer.parseInt(arg);
+            }
+            catch (NumberFormatException e) {
+                errorMSG = errorMSG.concat(arg + "\n");
+            }
+        }
         try {
-            int mapWidth = Integer.parseInt(width);
-            int mapHeight = Integer.parseInt(height);
-            int animalsNumInt = Integer.parseInt(animalsNum);
-            int genomeLengthInt = Integer.parseInt(genomeLength);
-            int startingEnergyInt = Integer.parseInt(startingEnergy);
-            int dailyEnergyInt = Integer.parseInt(dailyEnergy);
-            int energyFromPlantInt = Integer.parseInt(energyFromPlant);
-            int numberOfPlantsInt = Integer.parseInt(numberOfPlants);
-            int startingPlantsInt = Integer.parseInt(startingPlants);
-            int mapVariantInt = Integer.parseInt(mapVariant);
-            int behaviourVariantInt = Integer.parseInt(behaviourVariant);
-            int minMutationsNoInt = Integer.parseInt(minMutationsNo);
-            int maxMutationsNoInt = Integer.parseInt(maxMutationsNo);
-            int breedingEnergyInt = Integer.parseInt(breedingEnergy);
-
-            changeJSON(width, height, animalsNum, genomeLength, startingEnergy, dailyEnergy,
-                    energyFromPlant, numberOfPlants, startingPlants, mapVariant, behaviourVariant, minMutationsNo, maxMutationsNo, breedingEnergy);
-
+            changeJSON(args);
             showSimulationWindow();
         } catch (NumberFormatException | IOException | InterruptedException e) {
-            System.out.println("Wprowadzono nieprawidłowe dane. Proszę spróbować ponownie.");
+            System.out.println("Wprowadzono nieprawidłowe dane. Proszę spróbować ponownie. Błąd: " + errorMSG);
+        }
+    }
+    private void startSimWithOldConfig(){
+        try {
+            showSimulationWindow();
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -103,45 +106,23 @@ public class SimulationMenu extends Application {
         SimulationView sim = new SimulationView();
         sim.start(new Stage());
     }
-    private Vector2d parseVector2d(String input) {
-        String[] parts = input.split(",");
-        if (parts.length != 2) {
-            throw new IllegalArgumentException("Nieprawidłowy format danych dla Vector2d. Oczekiwano dwóch liczb oddzielonych przecinkiem.");
-        }
-        int x = Integer.parseInt(parts[0].trim());
-        int y = Integer.parseInt(parts[1].trim());
-        return new Vector2d(x, y);}
 
     public static void main(String[] args) {
         launch(args);
     }
 
-    public void changeJSON(String width, String height,
-                             String animalsNum, String genomeLength,
-                             String startingEnergy, String dailyEnergy,
-                             String energyFromPlant, String numberOfPlants,
-                             String startingPlants, String mapVariant,
-                             String behaviourVariant, String minMutationsNo, String maxMutationsNo,
-                             String breedingEnergy){
+    public void changeJSON(List<String> args){
         String filePath = new File("").getAbsolutePath();
         FileWriter file = null;
+        List<String> definitions = new ArrayList<>(List.of("MapWidth","MapHeight","animalsNum","genomeLength",
+                "startingEnergy","dailyEnergy","energyFromPlant","numberOfPlants","startingPlants","mapVariant",
+                "behaviourVariant","minimumMutationsNo","maximumMutationsNo","breedingEnergy"));
         try {
             file = new FileWriter(filePath + "/src/main/java/Project/Model/Core/config.json");
             JSONObject json = new JSONObject();
-            json.put("MapWidth", width);
-            json.put("MapHeight", height);
-            json.put("animalsNum", animalsNum);
-            json.put("genomeLength", genomeLength);
-            json.put("startingEnergy", startingEnergy);
-            json.put("energyFromPlant",energyFromPlant);
-            json.put("dailyEnergy", dailyEnergy);
-            json.put("numberOfPlants", numberOfPlants);
-            json.put("startingPlants",startingPlants);
-            json.put("mapVariant",mapVariant);
-            json.put("behaviourVariant",behaviourVariant);
-            json.put("minimumMutationsNo", minMutationsNo);
-            json.put("maximumMutationsNo", maxMutationsNo);
-            json.put("breedingEnergy",breedingEnergy);
+            for(int i=0;i<definitions.size();i++){
+                json.put(definitions.get(i),args.get(i));
+            }
 
             file.write(json.toString());
             file.flush();

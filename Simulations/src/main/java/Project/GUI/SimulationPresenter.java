@@ -7,44 +7,57 @@ import Project.Simulations.Simulation;
 import Project.Simulations.SimulationEngine;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.text.Text;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import static Project.Model.WorldElements.Maps.WorldMap.MAP_BEGINNING;
 import static java.util.Objects.isNull;
 
-public class SimulationPresenter implements MapChangeListener {
+public class SimulationPresenter implements MapChangeListener, Initializable {
+
+    // FXML
     @FXML
-    private Label statsAnimalsNum;
+    private Text statsAnimalsNum;
     @FXML
     private Label statsAnimalsNumVal;
     @FXML
-    private Label statsPlantsNum;
+    private Text statsPlantsNum;
     @FXML
     private Label statsPlantsNumVal;
     @FXML
-    private Label statsAverageEnergy;
+    private Text statsAverageEnergy;
     @FXML
     private Label statsAverageEnergyVal;
     @FXML
-    private Label statsAverageAge;
+    private Text statsAverageAge;
     @FXML
     private Label statsAverageAgeVal;
     @FXML
-    private Label statsAverageChildrenCount;
+    private Text statsAverageChildrenCount;
     @FXML
     private Label statsAverageChildrenCountVal;
-
-    private Simulation simulation;
+    @FXML
+    private Text statsEmptySpaces;
+    @FXML
+    private Label statsEmptySpacesVal;
     @FXML
     private Label messageLabel;
     @FXML
     private GridPane mapGrid = new GridPane();
+
+    private Simulation simulation;
+
     public void setSimulation(Simulation simulation){
         this.simulation = simulation;
     }
@@ -65,9 +78,10 @@ public class SimulationPresenter implements MapChangeListener {
         mapGrid.add(createLabel("y \\ x"), 0, 0);
 
 
-        int CELL_WIDTH = 40;
+        int CELL_WIDTH = Math.round((float) 400 /(simulation.getMap().getWidth()+1));
         mapGrid.getColumnConstraints().add(new ColumnConstraints(CELL_WIDTH));
-        int CELL_HEIGHT = 40;
+        int CELL_HEIGHT = Math.round(
+                (float) 400 /(simulation.getMap().getHeight()+1));
         mapGrid.getRowConstraints().add(new RowConstraints(CELL_HEIGHT));
 
 
@@ -115,32 +129,42 @@ public class SimulationPresenter implements MapChangeListener {
             messageLabel.setText("Dzień: " + sim.getDays());
             statsAnimalsNumVal.setText(String.valueOf(sim.getStats().aliveAnimalsCount()));
             statsPlantsNumVal.setText(String.valueOf(sim.getStats().grassesNumber()));
-            statsAverageEnergyVal.setText(String.valueOf(sim.getStats().averageEnergy()));
-            statsAverageAgeVal.setText(String.valueOf(sim.getStats().averageAgeOfDeath()));
-            statsAverageChildrenCountVal.setText(String.valueOf(sim.getStats().averageChildrenCount()));
+            statsAverageEnergyVal.setText(String.valueOf(round(sim.getStats().averageEnergy(),2)));
+            statsAverageAgeVal.setText(String.valueOf(round(sim.getStats().averageAgeOfDeath(),2)));
+            statsAverageChildrenCountVal.setText(String.valueOf(round(sim.getStats().averageChildrenCount(),2)));
+            statsEmptySpacesVal.setText(String.valueOf(sim.getStats().emptySpaces()));
         });
     }
     @FXML
-    public void onSimulationStartClicked() {
+    public void toggleSimulation(){
+        this.simulation.toggle();
+    }
 
+    private static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         SimulationConfig config = SimulationConfig.get();
 
         Simulation simulation = new Simulation(config);
         Platform.runLater(() -> {
-            statsAnimalsNum.setText("Animals Number");
-            statsPlantsNum.setText("Plants number");
-            statsAverageAge.setText("Average lifespan");
-            statsAverageChildrenCount.setText("Average childcount");
-            statsAverageEnergy.setText("Average energy");
+            statsAnimalsNum.setText("Animals number: ");
+            statsPlantsNum.setText("Plants number: ");
+            statsAverageAge.setText("Average age of death: ");
+            statsAverageChildrenCount.setText("Average child count: ");
+            statsAverageEnergy.setText("Average energy: ");
+            statsEmptySpaces.setText("Empty Spaces: ");
         });
         this.setSimulation(simulation);
         simulation.registerObserver(this);
-        SimulationEngine engine = new SimulationEngine(List.of(simulation));
-        engine.runAsyncInThreadPool();
-    }
 
-    @FXML
-    public void toggleSimulation(){
-        this.simulation.toggle();
+        Thread thread = new Thread(simulation);
+        thread.start();
     }
 }

@@ -1,5 +1,6 @@
 package Project.Model.Util;
 
+import Project.Model.Core.Vector2d;
 import Project.Model.WorldElements.Animals.Animal;
 import Project.Model.WorldElements.Maps.WorldMap;
 import java.util.HashSet;
@@ -45,6 +46,15 @@ public class GeneralStatistics {
             sum += animal.getStats().childrenCount();
         }
         return sum/map.getAnimals().size();
+    }
+    public int emptySpaces(){
+        int num = (map.getHeight()+1)*(map.getWidth()+1)-this.aliveAnimalsCount()-this.grassesNumber();
+        for(Animal animal : map.getAnimals()){
+            if(map.getMapState().getPlants().containsKey(animal.getPosition())){
+                num += 1;
+            }
+        }
+        return num;
     }
 
     //Helper

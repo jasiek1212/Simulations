@@ -19,7 +19,6 @@ public class AnimalVariant extends Animal{
     @Override
     public boolean move(WorldMap globe) {
         if(this.energy < simulation.getConfig().getDailyEnergy()){
-            globe.animalDied(this);
             return false;
         }
         else {

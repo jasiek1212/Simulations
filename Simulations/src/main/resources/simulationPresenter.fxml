@@ -3,38 +3,47 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.VBox?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             minHeight="550.0" minWidth="850.0"
             fx:controller="Project.GUI.SimulationPresenter">
     <top>
         <HBox spacing="15" alignment="CENTER" style="-fx-padding: 15">
-            <Button fx:id="startButton" onAction="#onSimulationStartClicked" text="Uruchom symulacje"/>
             <Label fx:id="messageLabel"/>
         </HBox>
     </top>
-
     <right>
-        <HBox spacing="15" alignment="CENTER" style="-fx-padding: 15">
-            <Label fx:id="statsAnimalsNum"/>
-            <Label fx:id="statsAnimalsNumVal"/>
-        </HBox>
-        <HBox spacing="15" alignment="CENTER" style="-fx-padding: 15">
-            <Label fx:id="statsPlantsNum"/>
-            <Label fx:id="statsPlantsNumVal"/>
-        </HBox>
-        <HBox spacing="15" alignment="CENTER" style="-fx-padding: 15">
-            <Label fx:id="statsAverageAge"/>
-            <Label fx:id="statsAverageAgeVal"/>
-        </HBox>
-        <HBox spacing="15" alignment="CENTER" style="-fx-padding: 15">
-            <Label fx:id="statsAverageChildrenCount"/>
-            <Label fx:id="statsAverageChildrenCountVal"/>
-        </HBox>
-        <HBox spacing="15" alignment="CENTER" style="-fx-padding: 15">
-            <Label fx:id="statsAverageEnergy"/>
-            <Label fx:id="statsAverageEnergyVal"/>
-        </HBox>
+
+        <VBox spacing="15" alignment="CENTER" style="-fx-padding: 15">
+            <Text text="Statystyki generalne: " style="-fx-background-color: blue" />
+
+            <HBox>
+                <Text fx:id="statsAnimalsNum" />
+                <Label fx:id="statsAnimalsNumVal"/>
+            </HBox>
+            <HBox>
+                <Text fx:id="statsPlantsNum"/>
+                <Label fx:id="statsPlantsNumVal"/>
+            </HBox>
+            <HBox>
+                <Text fx:id="statsAverageAge"/>
+                <Label fx:id="statsAverageAgeVal"/>
+            </HBox>
+            <HBox>
+                <Text fx:id="statsAverageChildrenCount"/>
+                <Label fx:id="statsAverageChildrenCountVal"/>
+            </HBox>
+            <HBox>
+                <Text fx:id="statsAverageEnergy"/>
+                <Label fx:id="statsAverageEnergyVal"/>
+            </HBox>
+            <HBox>
+                <Text fx:id="statsEmptySpaces"/>
+                <Label fx:id="statsEmptySpacesVal"/>
+            </HBox>
+        </VBox>
     </right>
 
     <center>

@@ -41,6 +41,9 @@ public class MapState{
     public Map<Vector2d,Grass> getPlants() {
         return plants;
     }
+    public Set<Vector2d> keySet(){
+        return state.keySet();
+    }
     public String toString(){
         StringBuilder result = new StringBuilder();
 

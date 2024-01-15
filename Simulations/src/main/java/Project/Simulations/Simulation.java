@@ -49,23 +49,20 @@ public class Simulation implements Runnable {
                         wait();  // Wait until the isRunning flag is true
                     }
                 }
-                Thread.sleep(500);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println("Day: " + days);
             map.clearDeadAnimals();
             map.moveAnimals();
             map.animalsEat();
             map.breedAnimals();
             map.spreadSeeds();
             dayPassed();
-            System.out.println(map.getMapState());
-            System.out.println(map);
         }
     }
 
-    public void toggle(){
+    public synchronized void toggle(){
         isRunning = !isRunning;
         notify();
     }
