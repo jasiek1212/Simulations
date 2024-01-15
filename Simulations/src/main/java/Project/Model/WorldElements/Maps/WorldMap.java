@@ -104,20 +104,8 @@ public abstract class WorldMap {
             }
         }
     }
-    public void animalsEat() {
-        for (Map.Entry<Vector2d, LinkedList<Animal>> entry : mapState.entrySet()) {
-            Vector2d position = entry.getKey();
-            LinkedList<Animal> animalsAtPosition = entry.getValue();
+    public abstract void animalsEat();
 
-            if (grassPositions.contains(position) && !animalsAtPosition.isEmpty()) {
-                Animal animalToEat = findAnimalWithMaxEnergy(animalsAtPosition);
-                animalToEat.eatPlant();
-                grassPositions.remove(position);
-                mapState.removePlant(position);
-
-            }
-        }
-    }
     public void clearDeadAnimals(){
         for(Animal animal : deadAnimals){
             this.animals.remove(animal);
@@ -158,7 +146,7 @@ public abstract class WorldMap {
     }
 
     //Helper
-    private Animal findAnimalWithMaxEnergy(LinkedList<Animal> animals) {
+    public Animal findAnimalWithMaxEnergy(LinkedList<Animal> animals) {
         if (animals.isEmpty()) {
             return null;
         }

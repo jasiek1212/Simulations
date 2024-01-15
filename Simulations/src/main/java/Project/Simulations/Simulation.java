@@ -26,10 +26,15 @@ public class Simulation implements Runnable {
         while(!map.allDead()){
             System.out.println("Day: " + days);
             map.clearDeadAnimals();
+            System.out.println("po deadanimals");
             map.moveAnimals();
+            System.out.println("po moveanimals");
             map.animalsEat();
+            System.out.println("po animalseat");
             map.breedAnimals();
+            System.out.println("po breatanimals");
             map.spreadSeeds();
+            System.out.println("po spreadseads");
             days++;
             System.out.println(map.getMapState());
             System.out.println(map);

@@ -56,7 +56,7 @@ public class SimulationMenu extends Application {
                 mapStartingEnergy,mapDailyEnergy,mapEnergyFromPlant,mapNumberOfPlants,mapStartingPlants, mapVariant,
                 mapBehaviourVariant, mapMutationsNumber, mapBreedingEnergy, startButton);
 
-        Scene scene = new Scene(layout, 400, 300);
+        Scene scene = new Scene(layout, 800, 700);
         stage.setTitle("Menu Symulacji");
         stage.setScene(scene);
         stage.show();
