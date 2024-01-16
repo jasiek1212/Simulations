@@ -1,6 +1,7 @@
 package Project.Model.WorldElements.Maps;
 
 import Project.Model.Core.Vector2d;
+import Project.Model.WorldElements.Animals.Animal;
 import Project.Model.WorldElements.Grass;
 import Project.Simulations.Simulation;
 
@@ -15,9 +16,24 @@ public class Equator extends WorldMap{
         initializePositions();
         spreadSeeds();
     }
+    public void animalsEat() {
+        for (Map.Entry<Vector2d, LinkedList<Animal>> entry : mapState.entrySet()) {
+            Vector2d position = entry.getKey();
+            LinkedList<Animal> animalsAtPosition = entry.getValue();
+
+            if (grassPositions.contains(position) && !animalsAtPosition.isEmpty()) {
+                Animal animalToEat = findAnimalWithMaxEnergy(animalsAtPosition);
+                animalToEat.eatPlant();
+                grassPositions.remove(position);
+                mapState.removePlant(position);
+
+            }
+        }
+    }
 
     public void spreadSeeds() {
-        Random random = new Random();
+        if(grassPositions.size() < ((height + 1) * (width + 1))){
+            Random random = new Random();
 
         for (int i = 0; i < simulation.getConfig().getNumberOfPlants(); i++) {
             if(grassPositions.size() == (width+1)*(height+1)){break;}

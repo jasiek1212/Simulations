@@ -72,9 +72,7 @@ public class SimulationMenu extends Application {
                 startButtonWithOldConfig);
 
         Scene scene = new Scene(layout, 600, 800);
-        stage.setTitle("Menu Symulacji");
-        stage.setScene(scene);
-        stage.show();
+
     }
     private void startSimulation(List<String> args) {
         String errorMSG = "";
