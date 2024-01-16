@@ -22,6 +22,7 @@ public abstract class WorldMap {
     protected final GeneralStatistics statistics = new GeneralStatistics(this);
     protected final Set<Vector2d> grassPositions = new HashSet<>();
     protected final LinkedList<Animal> deadAnimals = new LinkedList<>();
+
     protected final Simulation simulation;
 
 
@@ -43,6 +44,10 @@ public abstract class WorldMap {
 
         return null;
     }
+    public Animal animalAt(Vector2d position) {
+        LinkedList<Animal> animalsAtPosition = mapState.get(position);
+        return animalsAtPosition.getFirst();
+    }
     public boolean isOccupied(Vector2d position){
         return objectAt(position) != null;
     }
@@ -57,6 +62,11 @@ public abstract class WorldMap {
     public boolean isPlantAt(Vector2d position) {
         return grassPositions.contains(position);
     }
+    public boolean isAnimalAt(Vector2d position) {
+        LinkedList<Animal> animalsAtPosition = mapState.get(position);
+        return animalsAtPosition != null && !animalsAtPosition.isEmpty();
+    }
+
     public void placePlant(Grass grass){
         mapState.putPlant(grass);
         grassPositions.add(grass.getPosition());
