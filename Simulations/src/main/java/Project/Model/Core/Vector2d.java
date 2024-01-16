@@ -1,6 +1,7 @@
 package Project.Model.Core;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class Vector2d{
     private final int x;
@@ -9,15 +10,10 @@ public class Vector2d{
         this.x = x;
         this.y = y;
     }
-    public int getX() {
-        return x;
-    }
 
-    public int getY() {
-        return y;
-    }
-    public String toString(){
-        return "(%d,%d)".formatted(this.getX(),this.getY());
+    //Operations
+    int difference(){
+        return this.y - this.x;
     }
     public boolean precedes(Vector2d other){
         return this.x<=other.x && this.y<=other.y;
@@ -49,14 +45,29 @@ public class Vector2d{
         return new Vector2d(-this.x,-this.y);
     }
 
+    //Getters, Equals, HashCode
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) return false;
         Vector2d vector2d = (Vector2d) o;
         return x == vector2d.x && y == vector2d.y;
     }
-
     public int hashCode() {
         return Objects.hash(x, y);
     }
+    public String toString(){
+        return "(%d,%d)".formatted(this.getX(),this.getY());
+    }
+
+    //Random vector generator with boundaries width, height
+    public static Vector2d randomVector(int width, int height){
+        return new Vector2d(new Random().nextInt(width),new Random().nextInt(height));
+    }
+
 }

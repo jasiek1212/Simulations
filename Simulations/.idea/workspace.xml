@@ -4,9 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3aadde26-29b2-476d-89ee-2df8ba1f72e0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+    <list default="true" id="3aadde26-29b2-476d-89ee-2df8ba1f72e0" name="Changes" comment="FX ver.1 (simulations shown correctly)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationMenuNew.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/MapState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/MapState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Util/GeneralStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Util/GeneralStatistics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/AnimalStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/AnimalStandard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/AnimalVariant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/AnimalVariant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Maps/WorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Maps/WorldMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Simulations/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Simulations/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/simulationMenu.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/simulationPresenter.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/simulationPresenter.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,27 +30,186 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="package.json" />
+        <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="BranchJasia2" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2ZoenX2tgLgRqgPPM3B7rAHCKUL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;BranchJasia2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/janek/OneDrive/Dokumenty/Obiektowe/javafx-sdk-21.0.1/lib&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Project.Model.Core" />
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.SimulationMenu">
+    <configuration name="SimulationMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Project.GUI.SimulationMenu" />
+      <module name="Simulations.main" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\janek\OneDrive\Dokumenty\Obiektowe\javafx-sdk-21.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Project.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="World" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Project.World" />
+      <module name="Simulations.main" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\janek\OneDrive\Dokumenty\Obiektowe\javafx-sdk-21.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EquatorTest.testPreferredPositionsInitialization" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;EquatorTest.testPreferredPositionsInitialization&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in 'Simulations.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="WorldMapTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;WorldMapTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.World" />
+      <item itemvalue="Application.SimulationMenu" />
+      <item itemvalue="Gradle.EquatorTest.testPreferredPositionsInitialization" />
+      <item itemvalue="Gradle.Tests in 'Simulations.test'" />
+      <item itemvalue="Gradle.WorldMapTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.World" />
+        <item itemvalue="Application.SimulationMenu" />
+        <item itemvalue="Gradle.Tests in 'Simulations.test'" />
+        <item itemvalue="Gradle.EquatorTest.testPreferredPositionsInitialization" />
+        <item itemvalue="Gradle.WorldMapTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -47,8 +218,115 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1703093032239</updated>
-      <workItem from="1703093032271" duration="40000" />
+      <workItem from="1703093032271" duration="25565000" />
+      <workItem from="1703235668601" duration="4133000" />
+      <workItem from="1703240172587" duration="277000" />
+      <workItem from="1703273439544" duration="774000" />
+      <workItem from="1703276802439" duration="67000" />
+      <workItem from="1703325842138" duration="5730000" />
+      <workItem from="1703337354011" duration="3313000" />
+      <workItem from="1703495153071" duration="5652000" />
+      <workItem from="1703508436341" duration="2313000" />
+      <workItem from="1703597586891" duration="1510000" />
+      <workItem from="1703605388802" duration="5571000" />
+      <workItem from="1704967525217" duration="2320000" />
+      <workItem from="1705052884297" duration="6250000" />
+      <workItem from="1705063515242" duration="7904000" />
+      <workItem from="1705317968342" duration="7172000" />
+      <workItem from="1705334686909" duration="16000" />
+      <workItem from="1705334832649" duration="7000" />
+      <workItem from="1705335775965" duration="2382000" />
+      <workItem from="1705339594439" duration="482000" />
     </task>
+    <task id="LOCAL-00001" summary="Base">
+      <option name="closed" value="true" />
+      <created>1703096400910</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703096400910</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Animals move according to genotype">
+      <option name="closed" value="true" />
+      <created>1703235819824</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703235819824</updated>
+    </task>
+    <task id="LOCAL-00003" summary="first draft backend">
+      <option name="closed" value="true" />
+      <created>1704896946444</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1704896946444</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added Statistics">
+      <option name="closed" value="true" />
+      <created>1704968656303</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1704968656303</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Clean code v.2, 1st fx">
+      <option name="closed" value="true" />
+      <created>1704975444426</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1704975444427</updated>
+    </task>
+    <task id="LOCAL-00006" summary="works now">
+      <option name="closed" value="true" />
+      <created>1704977200850</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1704977200850</updated>
+    </task>
+    <task id="LOCAL-00007" summary="FX ver.1 (simulations shown correctly)">
+      <option name="closed" value="true" />
+      <created>1705068725094</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1705068725094</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Base" />
+    <MESSAGE value="Animals move according to genotype" />
+    <MESSAGE value="Behavior variants" />
+    <MESSAGE value="first draft backend" />
+    <MESSAGE value="Added Statistics" />
+    <MESSAGE value="Clean code v.2" />
+    <MESSAGE value="Clean code v.2, 1st fx" />
+    <MESSAGE value="works now" />
+    <MESSAGE value="FX ver.1 (simulations shown correctly)" />
+    <option name="LAST_COMMIT_MESSAGE" value="FX ver.1 (simulations shown correctly)" />
   </component>
 </project>
