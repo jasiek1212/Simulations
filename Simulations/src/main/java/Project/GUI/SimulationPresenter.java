@@ -15,6 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
 
+import java.awt.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URL;
@@ -77,19 +78,13 @@ public class SimulationPresenter implements MapChangeListener, Initializable {
         int gridHeight = topRight.getY() - bottomLeft.getY() + 2;
         mapGrid.add(createLabel("y \\ x"), 0, 0);
 
-
-        int CELL_WIDTH = Math.round((float) 400 /(simulation.getMap().getWidth()+1));
+        int CELL_WIDTH = Math.round((float) 300 / (simulation.getMap().getWidth() + 1));
         mapGrid.getColumnConstraints().add(new ColumnConstraints(CELL_WIDTH));
-        int CELL_HEIGHT = Math.round(
-                (float) 400 /(simulation.getMap().getHeight()+1));
+        int CELL_HEIGHT = Math.round((float) 300 / (simulation.getMap().getHeight() + 1));
         mapGrid.getRowConstraints().add(new RowConstraints(CELL_HEIGHT));
 
-
-
-        // creating axis x and axis y
-
+        // Creating axis x and axis y
         int leftStart = bottomLeft.getX();
-
         for (int i = 1; i < gridWidth; i++) {
             mapGrid.add(createLabel(String.valueOf(leftStart)), i, 0);
             mapGrid.getColumnConstraints().add(new ColumnConstraints(CELL_WIDTH));
@@ -103,26 +98,96 @@ public class SimulationPresenter implements MapChangeListener, Initializable {
             upperStart--;
         }
 
-        // filling map with actual objects
-        for (int i = bottomLeft.getY(); i <= topRight.getY(); i++) {
-            for (int j = bottomLeft.getX(); j <= topRight.getX(); j++) {
-                Vector2d currPoint = new Vector2d(j, i);
-                if (simulation.getMap().isOccupied(currPoint)) {
+        // Filling map with actual objects
+        if(simulation.getConfig().getMapVariant() == 1) {
+            for (int i = bottomLeft.getY(); i <= topRight.getY(); i++) {
+                for (int j = bottomLeft.getX(); j <= topRight.getX(); j++) {
+                    Vector2d currPoint = new Vector2d(j, i);
                     int columnInd = j - bottomLeft.getX() + 1;
                     int rowInd = gridHeight - (i - bottomLeft.getY()) - 1;
-                    mapGrid.add(createLabel(simulation.getMap().objectAt(currPoint).toString()),
-                            columnInd,
-                            rowInd);
+
+                    if (simulation.getMap().isOccupied(currPoint)) {
+                        if (simulation.getMap().isAnimalAt(currPoint)) {
+                            if (simulation.getMap().animalAt(currPoint).getEnergy() > 0.5 * simulation.getConfig().getStartingEnergy()) {
+                                mapGrid.add(createLabel1("\uD83E\uDD8D"), columnInd, rowInd);
+                            } else if (simulation.getMap().animalAt(currPoint).getEnergy() > 0.3 * simulation.getConfig().getStartingEnergy() && simulation.getMap().animalAt(currPoint).getEnergy() < 0.5 * simulation.getConfig().getStartingEnergy()) {
+                                mapGrid.add(createLabel2("\uD83E\uDDA7"), columnInd, rowInd);
+                            } else {
+                                mapGrid.add(createLabel3("\uD83D\uDC12"), columnInd, rowInd);
+                            }
+                        } else {
+                            mapGrid.add(createGrassCell("\uD83C\uDF4C"), columnInd, rowInd);
+                        }
+                    }
                 }
             }
+            String imagePath = getClass().getResource("/jungle.jpg").toExternalForm();
+            mapGrid.setStyle("-fx-background-image: url('" + imagePath + "'); -fx-background-size: cover;");
+        }
+        else {
+            for (int i = bottomLeft.getY(); i <= topRight.getY(); i++) {
+                for (int j = bottomLeft.getX(); j <= topRight.getX(); j++) {
+                    Vector2d currPoint = new Vector2d(j, i);
+                    int columnInd = j - bottomLeft.getX() + 1;
+                    int rowInd = gridHeight - (i - bottomLeft.getY()) - 1;
+
+                    if (simulation.getMap().isOccupied(currPoint)) {
+                        if (simulation.getMap().isAnimalAt(currPoint)) {
+                            if (simulation.getMap().animalAt(currPoint).getEnergy() > 0.5 * simulation.getConfig().getStartingEnergy()) {
+                                mapGrid.add(createLabel1("\uD83E\uDD81"), columnInd, rowInd);
+                            } else if (simulation.getMap().animalAt(currPoint).getEnergy() > 0.3 * simulation.getConfig().getStartingEnergy() && simulation.getMap().animalAt(currPoint).getEnergy() < 0.5 * simulation.getConfig().getStartingEnergy()) {
+                                mapGrid.add(createLabel2("\uD83D\uDC2F"), columnInd, rowInd);
+                            } else {
+                                mapGrid.add(createLabel3("\uD83D\uDC31"), columnInd, rowInd);
+                            }
+                        } else {
+                            mapGrid.add(createGrassCell("\uD83E\uDD69"), columnInd, rowInd);
+                        }
+                    }
+                }
+            }
+            String imagePath = getClass().getResource("/equator3.jpg").toExternalForm();
+            mapGrid.setStyle("-fx-background-image: url('" + imagePath + "'); -fx-background-size: cover;");
         }
     }
 
+    private Label createGrassCell(String text) {
+        Label grassCell = new Label(text);
+        GridPane.setHalignment(grassCell, HPos.CENTER);
+        grassCell.setStyle("-fx-min-width: 20px; -fx-min-height: 20px; -fx-pref-width: 20px; -fx-pref-height: 20px; -fx-max-width: 20px; -fx-max-height: 20px; -fx-alignment: center;");
+        return grassCell;
+    }
+    private Label createGrassCell2(String text) {
+        Label grassCell = new Label(text);
+        GridPane.setHalignment(grassCell, HPos.CENTER);
+        grassCell.setStyle("-fx-min-width: 20px; -fx-min-height: 20px; -fx-pref-width: 20px; -fx-pref-height: 20px; -fx-max-width: 20px; -fx-max-height: 20px; -fx-alignment: center;");
+        return grassCell;
+    }
     private Label createLabel(String text) {
         Label label = new Label(text);
+        label.setStyle("-fx-border-color: black;-fx-border-width: 1; -fx-min-width: 20px; -fx-min-height: 20px; -fx-pref-width: 20px; -fx-pref-height: 20px; -fx-max-width: 20px; -fx-max-height: 20px; -fx-alignment: center; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-color: #f0f0f0;");
         GridPane.setHalignment(label, HPos.CENTER);
         return label;
     }
+    private Label createLabel1(String text) {
+        Label label = new Label(text);
+        label.setStyle("-fx-min-width: 20px; -fx-min-height: 20px; -fx-pref-width: 20px; -fx-pref-height: 20px; -fx-max-width: 20px; -fx-max-height: 20px; -fx-alignment: center;");
+        GridPane.setHalignment(label, HPos.CENTER);
+        return label;
+    }
+    private Label createLabel2(String text) {
+        Label label = new Label(text);
+        label.setStyle("-fx-min-width: 20px; -fx-min-height: 20px; -fx-pref-width: 20px; -fx-pref-height: 20px; -fx-max-width: 20px; -fx-max-height: 20px; -fx-alignment: center;");
+        GridPane.setHalignment(label, HPos.CENTER);
+        return label;
+    }
+    private Label createLabel3(String text) {
+        Label label = new Label(text);
+        label.setStyle("-fx-min-width: 20px; -fx-min-height: 20px; -fx-pref-width: 20px; -fx-pref-height: 20px; -fx-max-width: 20px; -fx-max-height: 20px; -fx-alignment: center;");
+        GridPane.setHalignment(label, HPos.CENTER);
+        return label;
+    }
+
     public void notifyNextDay(Simulation sim) {
         Platform.runLater(() -> {
             drawMap(sim);

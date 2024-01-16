@@ -8,9 +8,10 @@ import java.util.Set;
 
 public class GeneralStatistics {
     private final WorldMap map;
-    private final Set<Animal> deadAnimals = new HashSet<>();
+    private final Set<Animal> deadAnimals;
     public GeneralStatistics(WorldMap map){
         this.map = map;
+        this.deadAnimals = new HashSet<>();
     }
 
     //Statistics
