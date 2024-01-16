@@ -1,14 +1,12 @@
 package Project.GUI;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.json.JSONObject;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -113,12 +111,12 @@ public class SimulationMenu extends Application {
 
     public void changeJSON(List<String> args){
         String filePath = new File("").getAbsolutePath();
-        FileWriter file = null;
+        FileWriter file;
         List<String> definitions = new ArrayList<>(List.of("MapWidth","MapHeight","animalsNum","genomeLength",
                 "startingEnergy","dailyEnergy","energyFromPlant","numberOfPlants","startingPlants","mapVariant",
                 "behaviourVariant","minimumMutationsNo","maximumMutationsNo","breedingEnergy"));
         try {
-            file = new FileWriter(filePath + "/Simulations/src/main/java/Project/Model/Core/config.json");
+            file = new FileWriter(filePath + "/src/main/java/Project/Model/Core/config.json");
             JSONObject json = new JSONObject();
             for(int i=0;i<definitions.size();i++){
                 json.put(definitions.get(i),args.get(i));
