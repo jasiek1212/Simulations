@@ -4,20 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3aadde26-29b2-476d-89ee-2df8ba1f72e0" name="Changes" comment="FX ver.1 (simulations shown correctly)">
+    <list default="true" id="3aadde26-29b2-476d-89ee-2df8ba1f72e0" name="Changes" comment="FX &amp; upgrades">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationMenuNew.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/MapState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/MapState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/Genome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/Genome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/SimulationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/SimulationConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Util/GeneralStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Util/GeneralStatistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/AnimalStandard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/AnimalStandard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/AnimalVariant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/AnimalVariant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Util/PersonalizedStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Util/PersonalizedStatistics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/Animal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Maps/WorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Maps/WorldMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Simulations/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Simulations/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/simulationMenu.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/simulationPresenter.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/simulationPresenter.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +29,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand />
@@ -56,7 +55,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="BranchJasia2" />
+        <entry key="$PROJECT_DIR$/.." value="Maciek" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -75,7 +74,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;BranchJasia2&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Jas&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/janek/OneDrive/Dokumenty/Obiektowe/javafx-sdk-21.0.1/lib&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -202,11 +201,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.World" />
-        <item itemvalue="Application.SimulationMenu" />
+        <item itemvalue="Gradle.WorldMapTest" />
         <item itemvalue="Gradle.Tests in 'Simulations.test'" />
         <item itemvalue="Gradle.EquatorTest.testPreferredPositionsInitialization" />
-        <item itemvalue="Gradle.WorldMapTest" />
+        <item itemvalue="Application.SimulationMenu" />
+        <item itemvalue="Application.World" />
       </list>
     </recent_temporary>
   </component>
@@ -237,6 +236,8 @@
       <workItem from="1705334832649" duration="7000" />
       <workItem from="1705335775965" duration="2382000" />
       <workItem from="1705339594439" duration="482000" />
+      <workItem from="1705416576849" duration="734000" />
+      <workItem from="1705418570675" duration="6871000" />
     </task>
     <task id="LOCAL-00001" summary="Base">
       <option name="closed" value="true" />
@@ -309,6 +310,17 @@
               <option name="CUSTOM_BOOLEAN_PROPERTIES">
                 <map>
                   <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
                 </map>
               </option>
             </State>

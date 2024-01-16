@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            minHeight="550.0" minWidth="850.0"
+            minHeight="550.0" minWidth="1000.0"
             fx:controller="Project.GUI.SimulationPresenter">
     <top>
         <HBox spacing="15" alignment="CENTER" style="-fx-padding: 15">
@@ -17,34 +17,81 @@
     <right>
 
         <VBox spacing="15" alignment="CENTER" style="-fx-padding: 15">
-            <Text text="Statystyki generalne: " style="-fx-background-color: blue" />
+            <Text text="General statistics: " style="-fx-background-color: blue" />
 
             <HBox>
-                <Text fx:id="statsAnimalsNum" />
+                <Text text="Animal number: " />
                 <Label fx:id="statsAnimalsNumVal"/>
             </HBox>
             <HBox>
-                <Text fx:id="statsPlantsNum"/>
+                <Text text="Plants number: "/>
                 <Label fx:id="statsPlantsNumVal"/>
             </HBox>
             <HBox>
-                <Text fx:id="statsAverageAge"/>
+                <Text text="Average age of death: "/>
                 <Label fx:id="statsAverageAgeVal"/>
             </HBox>
             <HBox>
-                <Text fx:id="statsAverageChildrenCount"/>
+                <Text text="Average children no.: "/>
                 <Label fx:id="statsAverageChildrenCountVal"/>
             </HBox>
             <HBox>
-                <Text fx:id="statsAverageEnergy"/>
+                <Text text="Average energy: "/>
                 <Label fx:id="statsAverageEnergyVal"/>
             </HBox>
             <HBox>
-                <Text fx:id="statsEmptySpaces"/>
+                <Text text="Empty spaces: "/>
                 <Label fx:id="statsEmptySpacesVal"/>
             </HBox>
         </VBox>
     </right>
+
+    <left>
+
+        <VBox spacing="15" alignment="CENTER" style="-fx-padding: 15">
+            <Text text="Personal statistics: " style="-fx-background-color: blue" />
+            <HBox>
+                <Text text="Chosen animal ID: " />
+                <Label fx:id="chosenAnimalVal"/>
+            </HBox>
+            <HBox>
+            <Text text="Position: " />
+            <Label fx:id="chosenPositionVal"/>
+            </HBox>
+            <HBox>
+                <Text text="Genotype: " />
+                <Label fx:id="personalGenotypeVal"/>
+            </HBox>
+            <HBox>
+                <Text text="Active gene: "/>
+                <Label fx:id="personalActiveGeneVal"/>
+            </HBox>
+            <HBox>
+                <Text text="Current energy: "/>
+                <Label fx:id="personalEnergyVal"/>
+            </HBox>
+            <HBox>
+                <Text text="Plants eaten: "/>
+                <Label fx:id="personalPlantsEatenVal"/>
+            </HBox>
+            <HBox>
+                <Text text="Children count: "/>
+                <Label fx:id="personalChildNumVal"/>
+            </HBox>
+            <HBox>
+                <Text text="Offspring count: "/>
+                <Label fx:id="personalOffspringCountVal"/>
+            </HBox>
+            <HBox>
+                <Text text="Age: "/>
+                <Label fx:id="personalAgeVal"/>
+            </HBox>
+            <HBox>
+                <Text text="Day of death: "/>
+                <Label fx:id="personalDeathVal"/>
+            </HBox>
+        </VBox>
+    </left>
 
     <center>
         <GridPane fx:id="mapGrid" gridLinesVisible="true" alignment="CENTER"/>

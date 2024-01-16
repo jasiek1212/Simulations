@@ -75,7 +75,7 @@ public class Genome {
     public byte[] getGenes(){
         return this.genes;
     }
-    public int getGene(){
+    public byte getGene(){
         return this.genes[currentGeneIndex];
     }
     public int size(){

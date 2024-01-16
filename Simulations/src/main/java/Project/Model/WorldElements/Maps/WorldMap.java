@@ -162,7 +162,7 @@ public abstract class WorldMap {
     }
 
     //Helper
-    private Animal findAnimalWithMaxEnergy(LinkedList<Animal> animals) {
+    public Animal findAnimalWithMaxEnergy(LinkedList<Animal> animals) {
         if (animals.isEmpty()) {
             return null;
         }
