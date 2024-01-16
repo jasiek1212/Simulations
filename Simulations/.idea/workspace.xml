@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3aadde26-29b2-476d-89ee-2df8ba1f72e0" name="Changes" comment="FX &amp; upgrades">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/Genome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/Genome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/SimulationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/SimulationConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Util/GeneralStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Util/GeneralStatistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Util/PersonalizedStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Util/PersonalizedStatistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Maps/WorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Maps/WorldMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/simulationPresenter.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/simulationPresenter.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="3aadde26-29b2-476d-89ee-2df8ba1f72e0" name="Changes" comment="better FX &amp; upgrades, personal statistics show" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -237,7 +226,7 @@
       <workItem from="1705335775965" duration="2382000" />
       <workItem from="1705339594439" duration="482000" />
       <workItem from="1705416576849" duration="734000" />
-      <workItem from="1705418570675" duration="6871000" />
+      <workItem from="1705418570675" duration="7354000" />
     </task>
     <task id="LOCAL-00001" summary="Base">
       <option name="closed" value="true" />
@@ -295,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705068725094</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="better FX &amp; upgrades, personal statistics show">
+      <option name="closed" value="true" />
+      <created>1705428009265</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1705428009265</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,6 +336,7 @@
     <MESSAGE value="Clean code v.2, 1st fx" />
     <MESSAGE value="works now" />
     <MESSAGE value="FX ver.1 (simulations shown correctly)" />
-    <option name="LAST_COMMIT_MESSAGE" value="FX ver.1 (simulations shown correctly)" />
+    <MESSAGE value="better FX &amp; upgrades, personal statistics show" />
+    <option name="LAST_COMMIT_MESSAGE" value="better FX &amp; upgrades, personal statistics show" />
   </component>
 </project>
