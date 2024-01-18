@@ -13,8 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.text.Text;
-import java.awt.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URL;
@@ -116,19 +114,19 @@ public class SimulationPresenter implements MapChangeListener, Initializable {
 
                     if (simulation.getMap().isOccupied(currPoint)) {
                         if (simulation.getMap().isAnimalAt(currPoint)) {
-                            if (simulation.getMap().animalAt(currPoint).getEnergy() > 0.5 * simulation.getConfig().getStartingEnergy()) {
-                                Label label = createLabel1("\uD83E\uDD8D");
+                            Label label;
+                            double energyRatio = (double) simulation.getMap().animalAt(currPoint).getEnergy() / simulation.getConfig().getStartingEnergy();
+                            if (energyRatio > 0.5) {
+                                label = createLabel1("\uD83E\uDD8D");
                                 label.setOnMouseClicked(event -> handleCellClick(currPoint));
-                                mapGrid.add(label, columnInd, rowInd);
-                            } else if (simulation.getMap().animalAt(currPoint).getEnergy() > 0.3 * simulation.getConfig().getStartingEnergy() && simulation.getMap().animalAt(currPoint).getEnergy() < 0.5 * simulation.getConfig().getStartingEnergy()) {
-                                Label label = createLabel1("\uD83E\uDDA7");
+                            } else if (energyRatio > 0.3) {
+                                label = createLabel1("\uD83E\uDDA7");
                                 label.setOnMouseClicked(event -> handleCellClick(currPoint));
-                                mapGrid.add(label, columnInd, rowInd);
                             } else {
-                                Label label = createLabel1("\uD83D\uDC12");
+                                label = createLabel1("\uD83D\uDC12");
                                 label.setOnMouseClicked(event -> handleCellClick(currPoint));
-                                mapGrid.add(label, columnInd, rowInd);
                             }
+                            mapGrid.add(label, columnInd, rowInd);
                         } else {
                             mapGrid.add(createGrassCell("\uD83C\uDF4C"), columnInd, rowInd);
                         }
@@ -147,21 +145,22 @@ public class SimulationPresenter implements MapChangeListener, Initializable {
 
                     if (simulation.getMap().isOccupied(currPoint)) {
                         if (simulation.getMap().isAnimalAt(currPoint)) {
-                            if (simulation.getMap().animalAt(currPoint).getEnergy() > 0.5 * simulation.getConfig().getStartingEnergy()) {
-                                Label label = createLabel1("\uD83E\uDD81");
+                            double energyRatio = (double) simulation.getMap().animalAt(currPoint).getEnergy() / simulation.getConfig().getStartingEnergy();
+                            Label label;
+                            if (energyRatio > 0.5) {
+                                label = createLabel1("\uD83E\uDD81");
                                 label.setOnMouseClicked(event -> handleCellClick(currPoint));
-                                mapGrid.add(label, columnInd, rowInd);
-                            } else if (simulation.getMap().animalAt(currPoint).getEnergy() > 0.3 * simulation.getConfig().getStartingEnergy() && simulation.getMap().animalAt(currPoint).getEnergy() < 0.5 * simulation.getConfig().getStartingEnergy()) {
-                                Label label = createLabel1("\uD83D\uDC2F");
+                            } else if (energyRatio > 0.3) {
+                                label = createLabel1("\uD83D\uDC2F");
                                 label.setOnMouseClicked(event -> handleCellClick(currPoint));
-                                mapGrid.add(label, columnInd, rowInd);
                             } else {
-                                Label label = createLabel1("\uD83D\uDC31");
+                                label = createLabel1("\uD83D\uDC31");
                                 label.setOnMouseClicked(event -> handleCellClick(currPoint));
-                                mapGrid.add(label, columnInd, rowInd);
                             }
+                            mapGrid.add(label, columnInd, rowInd);
                         } else {
-                            mapGrid.add(createGrassCell("\uD83E\uDD69"), columnInd, rowInd);
+                            Label label = createLabel1("\uD83E\uDD69");
+                            mapGrid.add(label, columnInd, rowInd);
                         }
                     }
                 }
@@ -181,12 +180,6 @@ public class SimulationPresenter implements MapChangeListener, Initializable {
         grassCell.setStyle("-fx-min-width: 20px; -fx-min-height: 20px; -fx-pref-width: 20px; -fx-pref-height: 20px; -fx-max-width: 20px; -fx-max-height: 20px; -fx-alignment: center;");
         return grassCell;
     }
-    private Label createGrassCell2(String text) {
-        Label grassCell = new Label(text);
-        GridPane.setHalignment(grassCell, HPos.CENTER);
-        grassCell.setStyle("-fx-min-width: 20px; -fx-min-height: 20px; -fx-pref-width: 20px; -fx-pref-height: 20px; -fx-max-width: 20px; -fx-max-height: 20px; -fx-alignment: center;");
-        return grassCell;
-    }
     private Label createLabel(String text) {
         Label label = new Label(text);
         label.setStyle("-fx-border-color: black;-fx-border-width: 1; -fx-min-width: 20px; -fx-min-height: 20px; -fx-pref-width: 20px; -fx-pref-height: 20px; -fx-max-width: 20px; -fx-max-height: 20px; -fx-alignment: center; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-color: #f0f0f0;");
@@ -194,18 +187,6 @@ public class SimulationPresenter implements MapChangeListener, Initializable {
         return label;
     }
     private Label createLabel1(String text) {
-        Label label = new Label(text);
-        label.setStyle("-fx-min-width: 20px; -fx-min-height: 20px; -fx-pref-width: 20px; -fx-pref-height: 20px; -fx-max-width: 20px; -fx-max-height: 20px; -fx-alignment: center;");
-        GridPane.setHalignment(label, HPos.CENTER);
-        return label;
-    }
-    private Label createLabel2(String text) {
-        Label label = new Label(text);
-        label.setStyle("-fx-min-width: 20px; -fx-min-height: 20px; -fx-pref-width: 20px; -fx-pref-height: 20px; -fx-max-width: 20px; -fx-max-height: 20px; -fx-alignment: center;");
-        GridPane.setHalignment(label, HPos.CENTER);
-        return label;
-    }
-    private Label createLabel3(String text) {
         Label label = new Label(text);
         label.setStyle("-fx-min-width: 20px; -fx-min-height: 20px; -fx-pref-width: 20px; -fx-pref-height: 20px; -fx-max-width: 20px; -fx-max-height: 20px; -fx-alignment: center;");
         GridPane.setHalignment(label, HPos.CENTER);
