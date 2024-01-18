@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3aadde26-29b2-476d-89ee-2df8ba1f72e0" name="Changes" comment="FX &amp; upgrades">
+    <list default="true" id="3aadde26-29b2-476d-89ee-2df8ba1f72e0" name="Changes" comment="better FX &amp; upgrades, personal statistics show">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Util/GeneralStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Util/GeneralStatistics.java" afterDir="false" />
@@ -66,24 +65,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Jas&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/janek/OneDrive/Dokumenty/Obiektowe/javafx-sdk-21.0.1/lib&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Dev",
+    "last_opened_file_path": "C:/Users/janek/OneDrive/Dokumenty/Obiektowe/javafx-sdk-21.0.1/lib",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Project.Model.Core" />
@@ -293,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705068725094</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="better FX &amp; upgrades, personal statistics show">
+      <option name="closed" value="true" />
+      <created>1705428009265</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1705428009265</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,6 +344,7 @@
     <MESSAGE value="Clean code v.2, 1st fx" />
     <MESSAGE value="works now" />
     <MESSAGE value="FX ver.1 (simulations shown correctly)" />
-    <option name="LAST_COMMIT_MESSAGE" value="FX ver.1 (simulations shown correctly)" />
+    <MESSAGE value="better FX &amp; upgrades, personal statistics show" />
+    <option name="LAST_COMMIT_MESSAGE" value="better FX &amp; upgrades, personal statistics show" />
   </component>
 </project>
