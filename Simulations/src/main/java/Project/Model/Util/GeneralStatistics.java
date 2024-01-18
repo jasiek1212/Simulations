@@ -7,10 +7,10 @@ import java.util.Set;
 
 public class GeneralStatistics {
     private final WorldMap map;
-    private final Set<Animal> deadAnimals;
+    private final Set<Animal> deadList;
     public GeneralStatistics(WorldMap map){
         this.map = map;
-        this.deadAnimals = new HashSet<>();
+        this.deadList = new HashSet<>();
     }
 
     //Statistics

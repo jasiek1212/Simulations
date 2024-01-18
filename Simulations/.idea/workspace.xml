@@ -8,13 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/GUI/SimulationPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/Genome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/Genome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/SimulationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/SimulationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Core/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Core/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Util/GeneralStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Util/GeneralStatistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/Util/PersonalizedStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/Util/PersonalizedStatistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Animals/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Maps/WorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Model/WorldElements/Maps/WorldMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/simulationPresenter.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/simulationPresenter.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/equator.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/equator2.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +52,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="Maciek" />
+        <entry key="$PROJECT_DIR$/.." value="Dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -238,6 +235,7 @@
       <workItem from="1705339594439" duration="482000" />
       <workItem from="1705416576849" duration="734000" />
       <workItem from="1705418570675" duration="6871000" />
+      <workItem from="1705566240403" duration="643000" />
     </task>
     <task id="LOCAL-00001" summary="Base">
       <option name="closed" value="true" />
