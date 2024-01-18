@@ -67,8 +67,14 @@ public abstract class Animal implements MapObject {
         return this.genome.getGenes();
     }
     public String toString(){
+
         return String.valueOf(this.id);
     }
+    public byte getActiveGene(){ return this.genome.getGene();}
+    public int getID(){
+        return this.id;
+    }
+
 
     //Statistics
     public void die(){

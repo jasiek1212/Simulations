@@ -42,14 +42,14 @@ public class Simulation implements Runnable {
     //Run simulation
     public void run(){
 
-        while(!map.allDead() && days < 30){
+        while(!map.allDead()){
             try {
                 synchronized (this) {
                     while (!isRunning) {
                         wait();  // Wait until the isRunning flag is true
                     }
                 }
-                Thread.sleep(1000);
+                Thread.sleep(400);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

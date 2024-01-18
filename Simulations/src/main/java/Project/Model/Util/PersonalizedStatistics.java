@@ -4,7 +4,9 @@ import Project.Model.WorldElements.Animals.Animal;
 import Project.Simulations.Simulation;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class PersonalizedStatistics {
 
@@ -29,10 +31,27 @@ public class PersonalizedStatistics {
         this.dayOfDeath = simulation.getDays();
     }
 
+
     //Get Stats
     public int childrenCount(){return children.size();}
     public List<Animal> getChildren(){return children;}
     public int howManyPlantsAte(){return plantsEaten;}
     public int whenBorn(){return dayOfBirth;}
     public int whenDied(){return dayOfDeath;}
+    public int offSpringCount(Animal animal){
+        return recursiveOffspringCounter(animal, new HashSet<>()).size();
+    }
+
+    //Helper
+    private Set<Animal> recursiveOffspringCounter(Animal animal, Set<Animal> children){
+        if(animal.getStats().children.isEmpty()){return children;}
+        for(Animal child : animal.getStats().children) {
+            if (children.contains(child)) {
+                continue;
+            }
+            children.add(child);
+            children = recursiveOffspringCounter(child,children);
+        }
+        return children;
+    }
 }
