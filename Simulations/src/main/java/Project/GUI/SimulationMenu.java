@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 
 public class SimulationMenu extends Application {
 
-    private Text errorLabel = new Text();
+    private final Text errorLabel = new Text();
     @Override
     public void start(Stage stage) {
         errorLabel.setFill(Color.RED);
@@ -104,16 +104,13 @@ public class SimulationMenu extends Application {
             throw new RuntimeException(e);
         }
     }
-
     private void showSimulationWindow() throws IOException, InterruptedException {
         SimulationView sim = new SimulationView();
         sim.start(new Stage());
     }
-
     public static void main(String[] args) {
         launch(args);
     }
-
     public void changeJSON(List<String> args){
         String filePath = new File("").getAbsolutePath();
         FileWriter file;
@@ -134,11 +131,7 @@ public class SimulationMenu extends Application {
             throw new RuntimeException(e);
         }
     }
-//    List<String> definitions = new ArrayList<>(List.of("MapWidth","MapHeight","animalsNum","genomeLength",
-//            "startingEnergy","dailyEnergy","energyFromPlant","numberOfPlants","startingPlants","mapVariant",
-//            "behaviourVariant","minimumMutationsNo","maximumMutationsNo","breedingEnergy"));
-
-    public void parseJSON(List<String> args) throws Exception{
+    private void parseJSON(List<String> args) throws Exception{
         String msg = "";
         int errorNo = 0;
         int formatErrorNo = 0;
