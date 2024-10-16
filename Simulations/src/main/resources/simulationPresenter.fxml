@@ -99,7 +99,7 @@
 
     <bottom>
         <HBox spacing="15" alignment="CENTER" style="-fx-padding: 15">
-            <Button fx:id="runSim" onAction="#toggleSimulation" text="Wstrzymaj/Wznów"/>
+            <Button fx:id="runSim" onAction="#toggleSimulation" text="Pause/Resume"/>
         </HBox>
     </bottom>
 

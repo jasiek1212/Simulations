@@ -27,33 +27,33 @@ public class SimulationMenu extends Application {
         layout.setPadding(new Insets(20, 20, 20, 20));
 
         TextField mapWidthField = new TextField();
-        mapWidthField.setPromptText("Szerokość mapy");
+        mapWidthField.setPromptText("Map width");
         TextField mapHeightField = new TextField();
-        mapHeightField.setPromptText("Wysokość mapy");
+        mapHeightField.setPromptText("Map height");
         TextField mapAnimalsNum = new TextField();
-        mapAnimalsNum.setPromptText("Liczba zwierząt");
+        mapAnimalsNum.setPromptText("Number of animals");
         TextField mapGenomeLength = new TextField();
-        mapGenomeLength.setPromptText("Genom");
+        mapGenomeLength.setPromptText("Genome length");
         TextField mapStartingEnergy = new TextField();
-        mapStartingEnergy.setPromptText("Startowa energia");
+        mapStartingEnergy.setPromptText("Starting energy");
         TextField mapDailyEnergy = new TextField();
-        mapDailyEnergy.setPromptText("Codzienna energia");
+        mapDailyEnergy.setPromptText("Movement energy cost");
         TextField mapEnergyFromPlant = new TextField();
-        mapEnergyFromPlant.setPromptText("Energia z rośliny");
+        mapEnergyFromPlant.setPromptText("Energy gained from eating");
         TextField mapNumberOfPlants = new TextField();
-        mapNumberOfPlants.setPromptText("Liczba roślin");
+        mapNumberOfPlants.setPromptText("Daily food increase");
         TextField mapStartingPlants = new TextField();
-        mapStartingPlants.setPromptText("Startowa liczba roślin");
+        mapStartingPlants.setPromptText("Starting amount of food");
         TextField mapVariant = new TextField();
-        mapVariant.setPromptText("Wariant Mapy");
+        mapVariant.setPromptText("Map variant");
         TextField mapBehaviourVariant = new TextField();
-        mapBehaviourVariant.setPromptText("Rodzaj zachowania");
+        mapBehaviourVariant.setPromptText("Behaviour variant");
         TextField mapMaxMutationsNo = new TextField();
-        mapMaxMutationsNo.setPromptText("Maks. liczba mutacji");
+        mapMaxMutationsNo.setPromptText("Max mutations number");
         TextField mapMinMutationsNo = new TextField();
-        mapMinMutationsNo.setPromptText("Min. liczba mutacji");
+        mapMinMutationsNo.setPromptText("Min mutations number");
         TextField mapBreedingEnergy = new TextField();
-        mapBreedingEnergy.setPromptText("Energia rozmnażania");
+        mapBreedingEnergy.setPromptText("Reproduction energy cost");
 
         ExecutorService executorService = Executors.newFixedThreadPool(4);
 
@@ -68,13 +68,13 @@ public class SimulationMenu extends Application {
 
         // ... logika przycisku do uruchamiania symulacji z wybranymi ustawieniami
 
-        layout.getChildren().addAll(new Label("Konfiguracja symulacji"), mapWidthField, mapHeightField, mapAnimalsNum, mapGenomeLength,
+        layout.getChildren().addAll(new Label("Simulation configuration"), mapWidthField, mapHeightField, mapAnimalsNum, mapGenomeLength,
                 mapStartingEnergy,mapDailyEnergy,mapEnergyFromPlant,mapNumberOfPlants,mapStartingPlants, mapVariant,
                 mapBehaviourVariant, mapMinMutationsNo, mapMaxMutationsNo, mapBreedingEnergy, startButtonWithNewConfig,
                 startButtonWithOldConfig,errorLabel);
 
         Scene scene = new Scene(layout, 600, 800);
-        stage.setTitle("Menu Symulacji");
+        stage.setTitle("Simulation Menu");
         stage.setScene(scene);
         stage.show();
     }
@@ -85,7 +85,7 @@ public class SimulationMenu extends Application {
             changeJSON(args);
             showSimulationWindow();
         } catch ( IOException | InterruptedException e) {
-            System.out.println("Wprowadzono nieprawidłowe dane. Proszę spróbować ponownie.");
+            System.out.println("Incorrect input. Please try again.");
         } catch (Exception e){
             String[] msgToShowAllLines = e.getMessage().split("\n");
             String msgToShow = "";
@@ -138,10 +138,10 @@ public class SimulationMenu extends Application {
         try{
             int mapWidth = Integer.parseInt(args.get(0));
             if(mapWidth<2){
-                throw new Exception("Szerokość nie może być mniejsza od 2.\n");
+                throw new Exception("Width must not be smaller than 2.\n");
             }
         } catch (NumberFormatException e){
-            msg = msg.concat("Zły format szerokości mapy.\n");
+            msg = msg.concat("Wrong map width.\n");
             formatErrorNo += 1;
 
         } catch (Exception e){
@@ -151,10 +151,10 @@ public class SimulationMenu extends Application {
         try{
             int mapHeight = Integer.parseInt(args.get(1));
             if(mapHeight<2){
-                throw new Exception("Wysokość nie może być mniejsza od 2.\n");
+                throw new Exception("Height must not be smaller than 2.\n");
             }
         } catch (NumberFormatException e){
-            msg = msg.concat("Zły format wysokości mapy.\n");
+            msg = msg.concat("Wrong map height.\n");
             formatErrorNo += 1;
         } catch (Exception e){
             msg = msg.concat(e.getMessage());
@@ -163,10 +163,10 @@ public class SimulationMenu extends Application {
         try{
             int animalsNum = Integer.parseInt(args.get(2));
             if(animalsNum<1){
-                throw new Exception("Liczba zwierząt powinna być dodatnia\n");
+                throw new Exception("Number of animals must be a positive integer\n");
             }
         } catch (NumberFormatException e){
-            msg = msg.concat("Zły format liczby zwierząt\n");
+            msg = msg.concat("Wrong animals number\n");
             formatErrorNo += 1;
         } catch (Exception e){
             msg = msg.concat(e.getMessage());
@@ -175,10 +175,10 @@ public class SimulationMenu extends Application {
         try{
             int genomeLength = Integer.parseInt(args.get(3));
             if(genomeLength<1){
-                throw new Exception("Genotyp musi być dodatniej długości\n");
+                throw new Exception("Genotype must be a positive integer\n");
             }
         } catch (NumberFormatException e){
-            msg = msg.concat("Zły format długości genotypu\n");
+            msg = msg.concat("Wrong genotype length\n");
             formatErrorNo += 1;
         } catch (Exception e){
             msg = msg.concat(e.getMessage());
@@ -187,10 +187,10 @@ public class SimulationMenu extends Application {
         try{
             int startingEnergy = Integer.parseInt(args.get(4));
             if(startingEnergy<1){
-                throw new Exception("Startowa energia musi być dodatnia\n");
+                throw new Exception("Starting energy must be positive\n");
             }
         } catch (NumberFormatException e){
-            msg = msg.concat("Zły format energii startowej\n");
+            msg = msg.concat("Wrong positive energy format\n");
             formatErrorNo += 1;
         } catch (Exception e){
             msg = msg.concat(e.getMessage());
@@ -199,10 +199,10 @@ public class SimulationMenu extends Application {
         try{
             int dailyEnergy = Integer.parseInt(args.get(5));
             if(dailyEnergy<1){
-                throw new Exception("Dzienna energia musi być dodatnia\n");
+                throw new Exception("Movement energy cost must be positive\n");
             }
         } catch (NumberFormatException e){
-            msg = msg.concat("Zły format ilości energii dziennej\n");
+            msg = msg.concat("Wrong movement energy cost\n");
             formatErrorNo += 1;
         } catch (Exception e){
             msg = msg.concat(e.getMessage());
@@ -211,10 +211,10 @@ public class SimulationMenu extends Application {
         try{
             int plantEnergy = Integer.parseInt(args.get(6));
             if(plantEnergy<1){
-                throw new Exception("Energia z rośliny musi być dodatnia\n");
+                throw new Exception("Energy gained from food has to be positive\n");
             }
         } catch (NumberFormatException e){
-            msg = msg.concat("Zły format energii z rośliny\n");
+            msg = msg.concat("Wrong food energy gain\n");
             formatErrorNo += 1;
         } catch (Exception e){
             msg = msg.concat(e.getMessage());
@@ -224,10 +224,10 @@ public class SimulationMenu extends Application {
         try{
             int dailyPlants = Integer.parseInt(args.get(7));
             if(dailyPlants<1){
-                throw new Exception("Dzienny przyrost roślin musi być dodatnia\n");
+                throw new Exception("Daily food increase has to be positive\n");
             }
         } catch (NumberFormatException e){
-            msg = msg.concat("Zły format przyrostu roślin\n");
+            msg = msg.concat("Wrong daily food increase\n");
             formatErrorNo += 1;
         } catch (Exception e){
             msg = msg.concat(e.getMessage());
@@ -236,10 +236,10 @@ public class SimulationMenu extends Application {
         try{
             int startingPlants = Integer.parseInt(args.get(8));
             if(startingPlants<1){
-                throw new Exception("Startowa liczba roślin musi być ujemna\n");
+                throw new Exception("Starting food amount has to be positive\n");
             }
         } catch (NumberFormatException e){
-            msg = msg.concat("Zły format energii z rośliny\n");
+            msg = msg.concat("Wrong starting food amount\n");
             formatErrorNo += 1;
         } catch (Exception e){
             msg = msg.concat(e.getMessage());
@@ -248,22 +248,22 @@ public class SimulationMenu extends Application {
         try{
             int mapVariant = Integer.parseInt(args.get(9));
         } catch (NumberFormatException e){
-            msg = msg.concat("Zły format wariantu mapy\n");
+            msg = msg.concat("Wrong map variant\n");
             formatErrorNo += 1;
         }
         try{
             int behaviourVariant = Integer.parseInt(args.get(10));
         } catch (NumberFormatException e){
-            msg = msg.concat("Zły format wariantu zachowania\n");
+            msg = msg.concat("Wrong behaviour variant\n");
             formatErrorNo += 1;
         }
         try{
             int minMutations = Integer.parseInt(args.get(11));
             if(minMutations<0){
-                throw new Exception("Minimalna liczba putacji musi być nieujemna\n");
+                throw new Exception("Minium number of mutations must be non-negative\n");
             }
         } catch (NumberFormatException e){
-            msg = msg.concat("Zły format minimalnej liczby mutacji\n");
+            msg = msg.concat("Wrong min. of mutations\n");
             formatErrorNo += 1;
         } catch (Exception e){
             msg = msg.concat(e.getMessage());
@@ -272,10 +272,10 @@ public class SimulationMenu extends Application {
         try{
             int maxMutations = Integer.parseInt(args.get(12));
             if(maxMutations<0){
-                throw new Exception("Minimalna liczba putacji musi być nieujemna\n");
+                throw new Exception("Maximum number of mutations must be non-negative\n");
             }
         } catch (NumberFormatException e){
-            msg = msg.concat("Zły format minimalnej liczby mutacji\n");
+            msg = msg.concat("Wrong max. of mutations\n");
             formatErrorNo += 1;
         } catch (Exception e){
             msg = msg.concat(e.getMessage());
@@ -284,17 +284,17 @@ public class SimulationMenu extends Application {
         try{
             int breedingEnergy = Integer.parseInt(args.get(13));
             if(breedingEnergy<0){
-                throw new Exception("Energia rozmnażania musi być nieujemna\n");
+                throw new Exception("Reproduction energy cost must be positive\n");
             }
         } catch (NumberFormatException e){
-            msg = msg.concat("Zły format energii rozmnażania\n");
+            msg = msg.concat("Wrong reproduction energy cost\n");
             formatErrorNo += 1;
         } catch (Exception e){
             msg = msg.concat(e.getMessage());
             errorNo += 1;
         }
 
-        String res = "Ilość niepoprawnych danych: " + errorNo + "\n" + "Ilość niepoprawnych liczb: " + formatErrorNo + "\n";
+        String res = "Number of incorrectly typed data: " + errorNo + "\n" + "Number of incorreclty formatted numbers: " + formatErrorNo + "\n";
         if(errorNo > 0 || formatErrorNo > 0){
             throw new Exception(res.concat(msg));
         }
