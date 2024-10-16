@@ -5,6 +5,7 @@ This is a project completed throughout the Object Oriented Programming course at
 # Table of Contents
 - [Project Functionality](#project-functionality)
 - [Project Setup in IntelliJ](#project-setup-in-intellij)
+- [Run the Program](#run-the-program)
 
 ## Project Functionality
 
