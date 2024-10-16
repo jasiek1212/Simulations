@@ -3,12 +3,12 @@
 This is a project completed throughout the Object Oriented Programming course at AGH UST Kraków. 
 
 # Table of Contents
-- [How it works](#how-it-works)
+- [Project Functionality](#project-functionality)
 - [Project Setup in IntelliJ](#project-setup-in-intellij)
 
-## How It Works
+## Project Functionality
 
-The simulation begins once the user selects their preferred configuration. A simulation window will appear, displaying a grid-based map populated with two types of objects: food and animals. Depending on the chosen map variant, the grid may feature different backgrounds and images to visually distinguish between the two environments.
+The simulation begins once the user selects their preferred configuration. A simulation window will appear, displaying a grid-based map populated with two types of objects: food and animals. Depending on the chosen map variant, the grid may feature different backgrounds and images to visually distinguish between the two environments. The simulation can be paused and a specific animal can be clicked to see its personal statistics. Each animal operates on a different thread, reducing computation time.
 
 ### Animal Behavior
 
@@ -62,11 +62,16 @@ In IntelliJ, navigate to Simulations/Simulations/src/main/java/World class and d
 
 ### 5. Run the project
 
-Now, click the green arrow at the top of the screen (still having the World class open) to run the simulation. 
+Now, click the green arrow at the top of the screen (still having the World class open) to run the program.
 
+## Run the Program
 
+### 1. Configuration
 
+There are two options available:
+* input your own configurations
+* run with previous configuration. If this is you first time running the program, this option will open the simulation with a default configuration.
 
-Aby rozpocząc symulację, uruchom klasę World. Przycisk "Start with old configuration" odpala symulację z poprzednią konfiguracją (lub domyślnie załączoną, jeśli jest uruchamiana pierwszy raz). 
+### 2. Simulation
 
-UWAGA: może się wydarzyć wyjątek NoSuchFileException - z jakiegoś powodu czasami niepoprawnie znajdowana jest lokalizacja pliku config.JSON. Aby to naprawić, trzeba w klasie Project/Model/Core/SimulationConfig.java w metodzie get() zmienić lokalizację (zazwyczaj działa dodanie "/Simulations/" na początku) i taką samą zmianę wprowadzić w Project/GUI/SimulationMenu.java w metodzie changeJSON().
+Once the configuration is confirmed, the simulation window will appear with objects as discussed in the  [Project Functionality](#project-functionality) chapter. You can pause the simulation with the pause/resume button and click on any of the animals to see its personal statistics (resume the simulation first). They will be shown on the left side of the grid. The simulation will keep running as long as any animal is alive and will stop once all the animals are dead.
