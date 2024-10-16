@@ -45,7 +45,7 @@ git https://github.com/jasiek1212/Simulations.git
 ```
 Navigate into the project directory:
 ```bash
-cd repository-name
+cd Simulations
 ```
 ### 2. Open the Project in IntelliJ
 Launch IntelliJ IDEA.
