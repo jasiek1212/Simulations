@@ -118,7 +118,7 @@ public class SimulationMenu extends Application {
                 "startingEnergy","dailyEnergy","energyFromPlant","numberOfPlants","startingPlants","mapVariant",
                 "behaviourVariant","minimumMutationsNo","maximumMutationsNo","breedingEnergy"));
         try {
-            file = new FileWriter(filePath + "/src/main/java/Project/Model/Core/config.json");
+            file = new FileWriter(filePath + "/Simulations/src/main/java/Project/Model/Core/config.json");
             JSONObject json = new JSONObject();
             for(int i=0;i<definitions.size();i++){
                 json.put(definitions.get(i),args.get(i));
